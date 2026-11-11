@@ -1,0 +1,44 @@
+name: Topic 1 saved Linux evidence replay
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Install locked environment
+        run: python3.12 scripts/reproduce_topic1.py setup
+      - name: Download saved evidence from the completed training run
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          github-token: ${{ github.token }}
+          run-id: 43019918648
+          artifact-ids: 13866411278
+          merge-multiple: true
+          path: .
+      - name: Replay saved models and complete external diagnostics without training
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          bash topic1/python.sh scripts/replay_linux_evidence.py 2>&1 | tee linux-recovery.log
+      - name: Save explicit replay scope and results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: topic1-linux-replay-${{ github.run_id }}
+          retention-days: 90
+          path: |
+            linux-recovery.log
+            outputs/linux_recovery/**

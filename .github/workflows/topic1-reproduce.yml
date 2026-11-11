@@ -44,6 +44,7 @@ jobs:
           }, indent=2))
           PY
       - name: Run official folds and scientific audits
+        timeout-minutes: 330
         env:
           REPRO_SCOPE: ${{ inputs.scope }}
         run: |
@@ -59,31 +60,4 @@ jobs:
           path: |
             reproduction-linux.log
             reproduction-runtime.json
-            outputs/**/environment.json
-            outputs/**/features*.npy
-            outputs/**/samples.csv
-            outputs/**/official_folds.json
-            outputs/**/runs/**/*.csv
-            outputs/**/requirement_audit.json
-            outputs/**/delivery_manifest.json
-            outputs/**/verification_manifest.json
-            outputs/**/predictions.csv
-            outputs/**/model.joblib
-            outputs/**/selection.json
-            outputs/**/result.json
-            outputs/**/inner_oof.csv
-            outputs/**/calibration.csv
-            outputs/**/intervals.csv
-            outputs/**/validation_fold_metrics.csv
-            outputs/**/evidence.json
-            outputs/**/protocol.json
-            outputs/**/summary.csv
-            outputs/**/validation_summary.csv
-            outputs/**/fold_metrics.csv
-            outputs/**/REPORT.md
-            outputs/project_verification/**
-            outputs/topic1_small_data/**
-            outputs/topic1_external_diagnostics/**
-            outputs/topic1_final/datasets/**
-            outputs/topic1_final/external/features.json
-
+            outputs/**
