@@ -1,0 +1,55 @@
+name: Topic 1 Linux reproduction
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Minimum teacher requirements or full optimized experiment'
+        type: choice
+        options:
+          - minimum
+          - all
+        default: minimum
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Install locked environment from scratch
+        run: python3.12 scripts/reproduce_topic1.py setup
+      - name: Unit and integrity regression tests
+        run: bash topic1/python.sh scripts/reproduce_topic1.py test
+      - name: Run official folds and scientific audits
+        env:
+          REPRO_SCOPE: ${{ inputs.scope }}
+        run: |
+          set -euo pipefail
+          bash topic1/python.sh scripts/reproduce_topic1.py "$REPRO_SCOPE" 2>&1 | tee reproduction-linux.log
+      - name: Save evidence and failure logs
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: topic1-linux-${{ inputs.scope }}-${{ github.run_id }}
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            reproduction-linux.log
+            outputs/**/requirement_audit.json
+            outputs/**/delivery_manifest.json
+            outputs/**/protocol.json
+            outputs/**/summary.csv
+            outputs/**/validation_summary.csv
+            outputs/**/fold_metrics.csv
+            outputs/**/REPORT.md
+
