@@ -65,6 +65,16 @@ jobs:
             outputs/**/runs/**/*.csv
             outputs/**/requirement_audit.json
             outputs/**/delivery_manifest.json
+            outputs/**/verification_manifest.json
+            outputs/**/predictions.csv
+            outputs/**/model.joblib
+            outputs/**/selection.json
+            outputs/**/result.json
+            outputs/**/inner_oof.csv
+            outputs/**/calibration.csv
+            outputs/**/intervals.csv
+            outputs/**/validation_fold_metrics.csv
+            outputs/**/evidence.json
             outputs/**/protocol.json
             outputs/**/summary.csv
             outputs/**/validation_summary.csv
