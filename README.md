@@ -15,6 +15,16 @@
   <a href="https://nighty35628.github.io/ligand-screening/evidence.html">研发与运行证据</a>
 </p>
 
+## 本 Fork：Topic 1 课程研究扩展
+
+新增五个 Matbench 官方任务的可复现实验、基线与表示消融、补充验证和审计代码。
+
+- [更新说明与复现入口](UPDATES.md)
+- [公开结果摘要](results/topic1-final/README.md)
+- [最终验证说明](topic1/FINAL_README.md)
+
+以下为原 Amadeus 项目介绍；其案例与本 Fork 课程实验使用各自的评估协议。
+
 ## Amadeus 能做什么
 
 材料研究中，一份历史实验表往往要经过字段整理、单位换算、特征构造和模型比较，才能用于预测新候选。资料、分析脚本和实验记录分散后，研究者还得反复核对：模型用了哪些数据，这个结果对应什么条件，为什么优先考虑这几个候选。
