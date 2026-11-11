@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "pass_all": true,
+  "started_at": "2026-11-11T13:14:33.708257+00:00",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "stages": {
+    "historical_and_final": {
+      "pass_all": true,
+      "final_model_replays": 86
+    },
+    "small_data": {
+      "pass_all": true,
+      "replayed_models": 1050,
+      "training_performed": false
+    },
+    "external_diagnostics": {
+      "pass_all": true,
+      "primary_rows": 5122,
+      "training_performed": false
+    }
+  },
+  "training_performed": false,
+  "source_manifest_sha256": "589ffa36c6f2db80b2cbeb067975037ce099cfe52d7b698a57f9f6d33acfc605",
+  "artifact_count": 6278,
+  "original_artifacts_unchanged": true,
+  "elapsed_seconds": 69.73190433300624,
+  "finished_at": "2026-11-11T13:15:43.439992+00:00",
+  "source_commit": "6379858dc1ff2f0b131e95eba5973db5b08a78ed",
+  "release_tag": "topic1-v1.0.1",
+  "tests_passed": 58,
+  "input_artifacts": "Public v1.0.1 source and both release ZIPs; independent checkout and environment created for v1.0.0 then updated",
+  "new_training": false,
+  "dependency_environment_origin": "Fresh v1.0.0 rehearsal setup; reused for v1.0.1",
+  "fault_injection": {
+    "README_changed": "check-project failed, latest status failed and pass_all false",
+    "README_restored": "check-project passed with 6278 original artifacts unchanged"
+  },
+  "log_sha256": {
+    "v101_isolated_tests.log": "a7840c3d616e3b3ce989eb4ffcbffad51a9ade1a8a97cf203c815236b8266fea",
+    "v101_isolated_check.log": "e9337d905d960d611a311385f1fc42eff567d4176e0b279f4e195820c28cd4ef",
+    "v101_preflight_failure.log": "f078a896cb51905442eb5642f948fc7b59aa19303d7add42ee4dd9bf643d070c",
+    "v101_recovery.log": "e9337d905d960d611a311385f1fc42eff567d4176e0b279f4e195820c28cd4ef"
+  }
+}
