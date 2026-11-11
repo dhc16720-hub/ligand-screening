@@ -66,7 +66,7 @@ bash topic1/python.sh scripts/reproduce_topic1.py v2
 bash topic1/python.sh scripts/reproduce_topic1.py v3
 bash topic1/python.sh scripts/reproduce_topic1.py v4
 bash topic1/python.sh scripts/reproduce_topic1.py final
-bash topic1/python.sh scripts/reproduce_topic1.py check-outputs
+bash topic1/python.sh scripts/reproduce_topic1.py check-complete
 ```
 
 也可从零执行 `bash topic1/python.sh scripts/reproduce_topic1.py all`。完整训练有数千次拟合，需要比最低要求阶段多得多的时间；脚本不虚报进度或跳过失败步骤。中断后重跑相同阶段会复用已完成折；已有清单时先校验，不重写历史清单。若改动代码或参数，请使用新的项目副本开展新实验，不要删除唯一结果或覆盖旧清单。
@@ -74,6 +74,33 @@ bash topic1/python.sh scripts/reproduce_topic1.py check-outputs
 V2 包含 XGBoost、内层搜索、强模型归档复评分和额外验证；脚本补齐此前漏掉的 V1/V2 清单生成。V3/V4 的报告程序会自己生成清单。final 会先下载并核验独立来源玻璃数据的原始字节，再调用冻结流程；下载器不解析标签，评估器在源数据模型保存后才读取外部表。最终生成 `outputs/topic1_final/requirement_audit.json`、`validation_summary.csv`、`evidence.json` 和图表。
 
 新运行会有自己的耗时、环境信息、模型序列化哈希及清单哈希，不应强求与原实验逐字一致。科学比较应看相同任务、划分、指标和方法；内部模型重放仍按源码规定的容差严格核验。公开 `results/topic1-final/protocol.json` 是原实验来源记录，**不要复制到新运行的 outputs**，否则历史清单哈希会冲突。
+
+### 完整验收（含最终补充实验）
+
+`final` / `all` 完成后会自动生成 `outputs/topic1_final/verification_manifest.json`。已有旧版完整输出的用户先运行一次：
+
+```bash
+bash topic1/python.sh scripts/reproduce_topic1.py seal-final
+bash topic1/python.sh scripts/reproduce_topic1.py check-complete
+```
+
+`seal-final` 只有在科学重放成功后才建立新清单，不覆盖已有清单或历史交付清单。`check-complete` 必须已有该清单；它覆盖 V1–V4，以及 final 的 453 个必需实验/依赖文件，复核 115 份外层预测并重放 86 个模型组合，同时检查外部 Brier 分数。缺文件、文件被修改、清单不完整或科学核验失败均报错。该范围不包含可选 PPT、DOCX 或美化图表，也不代表所有操作系统通过。
+
+科学重放在临时副本中执行，原始预测、模型、报告表和历史审计均保持原样。需额外约 300 MB 临时空间及模型推理时间，不重新训练。首次建清单证明当前产物通过独立核验，不能倒推此前从未被修改；后续清单用于检测变动。只核对哈希不能代替模型重放，因此完整验收会实际执行两者。
+
+## 增量研究：小数据表示对照与外部失败分析
+
+这些研究使用独立 `experiments/` 模块和输出目录，不改写 V1–V4/final 的冻结实验。安装与 minimum 完成后可运行小数据实验；外部诊断需要已经完成 final 并生成最终验证清单：
+
+```bash
+bash topic1/python.sh scripts/reproduce_topic1.py small-data
+bash topic1/python.sh scripts/reproduce_topic1.py check-small-data
+bash topic1/python.sh scripts/reproduce_topic1.py external-diagnostics
+```
+
+`small-data` 在五任务官方五折上进行 A/B/C × RF/ET 配对学习曲线：20%、50%、100% 的训练样本，前两档各三次嵌套抽样，共 1,050 次拟合；全量点不重复计数。默认四个进程，每个模型单线程。所有模型和预测保存于 `outputs/topic1_small_data`，需额外磁盘和训练时间。`check-small-data` 检查清单、重放全部 1,050 个模型，并核对训练内预处理与官方测试 ID。汇总先平均折内抽样重复，再计算五折描述性统计，不以重复抽样数量扩大显著性。
+
+`external-diagnostics` 先完整核验原最终实验，再从冻结的外部预测生成分体系混淆矩阵、固定分箱可靠性图和恒定概率参照；输出在 `outputs/topic1_external_diagnostics`。它不训练模型、不改阈值、不校准，是对已查看结果的描述性分析。公开阅读入口为 [课程研究指南](COURSE_GUIDE.md)。新研究的实测平台与结果以其审计和报告为准；旧 Linux 运行记录不代表新研究已在 Linux 通过。
 
 ## GitHub 上独立运行 Linux 验证
 
@@ -88,6 +115,7 @@ Actions 附件保留 7 天，重要结果应及时下载；仓库中的复现审
 | `python3 scripts/reproduce_topic1.py check-public` | 下载的源码、文档及摘要与发布清单一致 | 没有训练任何模型 |
 | `... reproduce_topic1.py test` | 单元测试与环境检查通过 | 不等于五任务实验完成 |
 | `... reproduce_topic1.py check-outputs` | V1–V4 清单必须存在、非空，所有登记文件哈希正确 | 单独的哈希校验不替代科学审计 |
+| `... reproduce_topic1.py check-complete` | V1–V4 + final 完整性、最终科学重放和已保存汇总一致 | 不重训、不保证跨平台逐数相同、不检查可选演示文件 |
 | 各阶段 `requirement_audit.json` | 已生成预测按独立审计规则通过 | 不保证新材料域上的性能 |
 
 历史 `topic1.check_delivery` 在没有清单时会检查零文件，因此公开下载版统一使用上表的新入口；不能把旧脚本的零文件通过作为证据。新入口有回归测试，空清单、缺失文件、修改文件和越界路径均失败。

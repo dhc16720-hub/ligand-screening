@@ -19,6 +19,7 @@
 
 新增五个 Matbench 官方任务的可复现实验、基线与表示消融、补充验证和审计代码。
 
+- [课程研究入口：贡献边界、研究证据与汇报顺序](COURSE_GUIDE.md)
 - [从公开下载版复现：安装、最低要求、完整流程](REPRODUCING.md)
 - [研究结果与要求对应分析](RESEARCH_SUMMARY.md)
 - [更新说明](UPDATES.md)
