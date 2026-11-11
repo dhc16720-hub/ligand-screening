@@ -10,7 +10,7 @@
 | macOS 增量研究 | 1,050 次拟合及全部模型重放；外部诊断不训练 |
 | macOS 统一 `check-project` | 实测通过：6,278 个原始文件、最终 86 个模型组合及小数据 1,050 个模型重放，原文件不变 |
 | 测试 | 当前 58 项：原科学测试 18 + 复现回归 14 + 小数据/外部诊断 8 + 项目验收/发布 18；历史 Linux 的 22 项仅代表当时版本 |
-| 发布包独立解压核验 | v1.0.0：公开源码新克隆、两个发布 ZIP、全新依赖环境、54 项当时测试及总验收通过；[证据](results/topic1-improvements/release_rehearsal.json) |
+| 发布包独立解压核验 | v1.0.0：新克隆、新依赖环境、54 项测试及总验收通过；[证据](results/topic1-improvements/release_rehearsal.json)。该独立副本更新至 v1.0.1 并解压对应两个 ZIP 后，58 项测试、总验收、故障注入与恢复通过；[v1.0.1 证据](results/topic1-improvements/release_v101_rehearsal.json) |
 | Linux minimum | 历史两次通过；不代表优化实验已通过 |
 | Linux 全项目 | [运行 #3](https://github.com/dhc16720-hub/ligand-screening/actions/runs/43019918648)已启动，固定提交 `06d0936`，该提交包含 48 项测试；后续发布工具与状态修正测试不在此旧提交中。完成前不标记通过 |
 | Windows/WSL2 | 未实测 |
@@ -120,12 +120,14 @@ bash topic1/python.sh scripts/reproduce_topic1.py external-diagnostics
 ## 整套项目运行与验收
 
 ```bash
-# 从零依次完成历史实验、新增研究和最终总验收（共 8,531 次拟合）
+# 从零依次完成历史实验、新增研究和最终总验收（原 macOS 实测 8,531 次拟合）
 bash topic1/python.sh scripts/reproduce_topic1.py project
 
 # 已有完整结果时，只重放与核验，不训练
 bash topic1/python.sh scripts/reproduce_topic1.py check-project
 ```
+
+最终组合中重新拟合的模型数量取决于训练内选择结果；其他平台应读取该次审计中的实际拟合次数，不把原 macOS 的 8,531 次作为固定计数。
 
 `all` 和 `check-complete` 保持原有 V1–V4/final 范围；`project` 和 `check-project` 才包含新增小数据研究与外部诊断。总验收复核完整性、官方数据身份、保存模型预测、汇总表、外部诊断来源和报告；小数据与外部重算在临时目录进行。图表文件校验完整性，数值结论通过模型重放和表格重算核对；不声称进行图像像素相等验证。
 
@@ -145,7 +147,7 @@ bash topic1/python.sh scripts/reproduce_topic1.py check-project
 
 在自己的 Fork 打开 Actions → **Topic 1 Linux reproduction** → Run workflow，选择 `minimum`、`all` 或 `project`。工作流使用 Ubuntu 24.04、Python 3.12、锁定科学依赖和固定提交的官方 Actions；仓库权限为只读，不需要 API 密钥。先安装和测试，再运行完整指定阶段，最后上传审计、报告、运行日志和数值诊断附件。`all` 是历史实验入口；`project` 还运行新增研究和总验收。提供入口或启动任务不代表验收通过。
 
-新工作流的 Actions 附件保留 90 天；历史运行按当时的 7 天设置保留。附件不是永久归档，重要结果应及时下载；仓库中的复现审计 JSON 和逐折指标是长期保留的摘要。运行失败不能以某个前置步骤成功替代最终科学审计。
+新工作流的 Actions 附件保留 90 天；历史运行按当时的 7 天设置保留。附件不是永久归档，重要结果应及时下载。Actions 附件仅包含工作流列出的证据文件，并非完整的离线重放包；重放已有模型请使用同一 Release 的源码、结果包与模型包；仓库中的复现审计 JSON 和逐折指标是长期保留的摘要。运行失败不能以某个前置步骤成功替代最终科学审计。
 
 ## 不同检查能证明什么
 
