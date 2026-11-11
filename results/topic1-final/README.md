@@ -7,6 +7,7 @@
 | baseline_v1_summary.csv / minimum_requirement_audit.json | 三个正式基线、五任务官方五折最低要求证据 |
 | baseline_v2_summary.csv / reference_fold_metrics.csv | 优化基线、表示消融与强模型归档重评分 |
 | learning_curve.csv | 两任务固定 RF 的小样本学习曲线 |
+| complete_verification_check.json | 新增完整验收入口的两套真实产物重放及负向测试记录，不代表重新训练 |
 | reproduction_check.json / reproduction_minimum_audit.json | 本次干净克隆的实际验证范围与五任务审计 |
 | reproduction_full_audit.json | macOS 全链路 7,481 次拟合、各阶段独立审计及与原结果比较 |
 | reproduction_linux_audit.json | 独立 Ubuntu minimum 运行、平台信息及跨平台差异 |

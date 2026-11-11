@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "date": "2026-11-11",
+  "scope": "Complete verification entry point; no new model training",
+  "platform": "macOS Apple Silicon",
+  "original_outputs_verified": true,
+  "independent_reproduction_outputs_verified": true,
+  "required_final_and_dependency_files": 453,
+  "outer_predictions_per_audit": 115,
+  "replayed_bundles_per_audit": 86,
+  "unit_tests": 18,
+  "reproduction_tests": 14,
+  "new_model_fits": 0,
+  "scientific_sources_changed": false,
+  "original_scientific_outputs_changed": false,
+  "negative_tests": [
+    "Missing manifest",
+    "Missing required audit",
+    "Deleted prediction",
+    "Modified model",
+    "Truncated manifest",
+    "Incomplete audit with pass_all only",
+    "Scientific replay failure",
+    "Historical artifact modification",
+    "Modification during replay",
+    "Final rerun must verify before writing"
+  ],
+  "limitations": [
+    "New verification entry point has not yet been run on Linux or Windows.",
+    "Optional PPT, DOCX and figure rendering are outside verification scope.",
+    "First sealing validates current artifacts; it cannot prove their earlier history."
+  ],
+  "log_sha256": {
+    "initial-test-suite.log": "dcca93c3add7a94185a69b254a03005d6cda7989476e2f38376bb2da873c812f",
+    "independent-clone.log": "9315730784a780f5e80c88aee8deb2501368ae55c82d9d37125526a5564605d2",
+    "original.log": "85c55441002f1f5efef0d8b1ff5a47f2c8d2ec7ebbf94b75229e3169882f8dfb",
+    "regression-tests.log": "f2c4ffdf00b74a81b9239425ac34f5497372075df07f63cd309c57e504b2d09e"
+  }
+}
