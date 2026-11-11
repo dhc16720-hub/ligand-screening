@@ -33,10 +33,26 @@
     "f1": 0.0
   },
   "external_download_sha256": "4a4c60ef227891203570dbc3decb606649b877f6b75289afd4e78fe8e8095e63",
-  "full_v2_through_final_retraining_this_check": false,
+  "full_v2_through_final_retraining_this_check": true,
   "limitations": [
-    "New-machine end-to-end training was verified for the minimum stage; V2-V4 and final experiments were previously completed but were not all retrained in this clean clone audit.",
-    "Only macOS Apple Silicon was tested; Linux and WSL2 were not tested.",
-    "DOCX/native slide generation is optional and was not rerun in the clean environment."
+    "This is reproducibility of an exploratory benchmark, not a new blind generalization test.",
+    "DOCX and native presentation builds were not repeated.",
+    "Linux is separately verified for minimum only; Windows/WSL2 remains untested.",
+    "All stage audits passed independently. Metric identity at 1e-10 is not universal: tiny prediction differences change near-tied ROC-AUC rankings. Original outputs and scores were not rounded or modified to force agreement.",
+    "Cross-platform outputs are not numerically identical; see reproduction_linux_audit.json for full differences."
+  ],
+  "fits_by_stage": {
+    "minimum": 362,
+    "v2": 1780,
+    "v3": 900,
+    "v4": 450,
+    "final": 3989
+  },
+  "total_fits": 7481,
+  "full_audit": "reproduction_full_audit.json",
+  "linux_audit": "reproduction_linux_audit.json",
+  "linux_successful_runs": [
+    "https://github.com/dhc16720-hub/ligand-screening/actions/runs/42977352926",
+    "https://github.com/dhc16720-hub/ligand-screening/actions/runs/42982176504"
   ]
 }

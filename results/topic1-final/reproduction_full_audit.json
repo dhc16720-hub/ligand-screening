@@ -1,0 +1,1369 @@
+{
+  "status": "passed",
+  "date": "2026-11-11",
+  "platform": "macOS Apple Silicon",
+  "python": "3.12.14",
+  "clone_base_commit": "244267be2cbaf0e7596afadf2d37f0d3e4e81782",
+  "runner_sha256": "c77f614c6fee3288028c17b48856031760c701bd1f180ed724934442936b643d",
+  "fresh_environment": true,
+  "original_models_or_feature_caches_copied": false,
+  "original_scientific_sources_changed": false,
+  "fits_by_stage": {
+    "minimum": 362,
+    "v2": 1780,
+    "v3": 900,
+    "v4": 450,
+    "final": 3989
+  },
+  "total_fits": 7481,
+  "scientific_audits": {
+    "topic1": {
+      "pass_all": true,
+      "tasks": [
+        {
+          "task": "matbench_steels",
+          "samples": 312,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_jdft2d",
+          "samples": 636,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C",
+            "C_structure"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 80
+        },
+        {
+          "task": "matbench_expt_gap",
+          "samples": 4604,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_expt_is_metal",
+          "samples": 4921,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_glass",
+          "samples": 5680,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        }
+      ],
+      "total_main_fits": 320,
+      "official_validation_sha256": "94c17bc3dac32c67d33d69289927a5fec174497e74bbc47293e23d3d147e9a6d",
+      "checks": [
+        "exact official train/test IDs and order",
+        "each sample tested once per configuration",
+        "three substantive models in every task",
+        "saved targets match official data",
+        "all metrics recomputed from saved predictions",
+        "all official result files validate",
+        "classification ROC-AUC uses probabilities"
+      ],
+      "limitations": [
+        "No external SOTA reproduction",
+        "No hyperparameter search",
+        "Fold SD is not a confidence interval"
+      ],
+      "learning_fits": 40,
+      "diagnostic_refits": 2,
+      "learning_points_verified": 50,
+      "raw_dataset_hashes_verified": 5
+    },
+    "topic1_v2": {
+      "pass_all": true,
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "inner_folds": 3,
+      "verified_prediction_folds": 260,
+      "inner_candidate_fits": 1530,
+      "outer_model_refits": 230,
+      "conformal_fits": 15,
+      "linear_ablation_fits": 5,
+      "total_local_fits": 1780,
+      "external_reference_folds": 40,
+      "trained_baselines": [
+        "Linear",
+        "RF",
+        "ET",
+        "XGB"
+      ],
+      "selection_audit": "Every parameter and blend choice reconstructed from inner validation only",
+      "tests": [
+        "official sample identity and order",
+        "train/validation/test separation",
+        "inner score recomputation",
+        "selected configurations equal inner argmin",
+        "blends equal inner-selected member predictions",
+        "seed perturbations keep parameters fixed",
+        "official export validation",
+        "outer metric recomputation",
+        "conformal calibration separation and quantile",
+        "published reference metrics recomputed"
+      ],
+      "saved_xgboost_models_replayed": 30,
+      "csv_precision": "XGBoost float32 values expanded losslessly to float64 text; matched saved-model inference."
+    },
+    "topic1_v3": {
+      "pass_all": true,
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "verified_prediction_folds": 120,
+      "replayed_saved_models": 90,
+      "new_inner_fits": 810,
+      "new_outer_refits": 90,
+      "total_new_fits": 900,
+      "preserved_historical_files": {
+        "V1": 887,
+        "V2": 1017
+      },
+      "selection_recomputed": true,
+      "validation": "Official IDs, splits, metrics, exports, model replay and inner-only recipe choice checked"
+    },
+    "topic1_v4": {
+      "pass_all": true,
+      "tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "new_representation_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_glass"
+      ],
+      "official_folds": 5,
+      "verified_prediction_folds": 85,
+      "replayed_saved_models": 45,
+      "new_inner_fits": 405,
+      "new_outer_refits": 45,
+      "total_new_fits": 450,
+      "preserved_historical_files": {
+        "V1": 887,
+        "V2": 1017,
+        "V3": 522
+      },
+      "gate_reconstructed": true,
+      "matched_candidate_budgets_verified": true,
+      "model_replay_tolerance": {
+        "rtol": 1e-12,
+        "atol": 1e-10
+      },
+      "unchanged_tasks_exact": true
+    },
+    "topic1_final": {
+      "pass_all": true,
+      "historical_files_preserved": {
+        "V1": 887,
+        "V2": 1017,
+        "V3": 522,
+        "V4": 349
+      },
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "validated_outer_prediction_files": 115,
+      "replayed_bundles": 86,
+      "inner_candidate_fits": 3789,
+      "final_component_refits": 200,
+      "total_new_fits": 3989,
+      "external_primary_n": 5122,
+      "source_checksum_verified": true,
+      "conformal_selection_calibration_separated": true,
+      "common_pool_reconstructed": true,
+      "limitations": [
+        "Full reselection seed experiment covers steels and jdft2d, conditional refit covers five tasks.",
+        "External validation covers glass under changed processing conditions, not all five properties.",
+        "Published strong-model results are rescored archives, not matched-budget local retraining."
+      ]
+    }
+  },
+  "comparisons_to_original": {
+    "v2": {
+      "stage": "v2",
+      "rows": 260,
+      "strict_1e10_match": false,
+      "max_abs_by_metric": {
+        "mae": 5.684341886080802e-14,
+        "rmse": 5.684341886080802e-14,
+        "r2": 4.440892098500626e-16,
+        "roc_auc": 6.196810708125611e-06,
+        "balanced_accuracy": 0.0,
+        "accuracy": 0.0,
+        "f1": 0.0,
+        "brier": 2.7755575615628914e-17,
+        "log_loss": 2.7755575615628914e-17
+      },
+      "differences": [
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "B",
+            "ET",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9709307609683548,
+          "rounded_12_auc_original": 0.9709307609683548
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET",
+            1
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9755267289101875,
+          "rounded_12_auc_original": 0.9755267289101875
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9744650086755351,
+          "rounded_12_auc_original": 0.9744650086755351
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed2026",
+            1
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9757023052135834,
+          "rounded_12_auc_original": 0.9757023052135834
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed2026",
+            3
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9780508964719492,
+          "rounded_12_auc_original": 0.9780508964719492
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed2026",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9750433776749566,
+          "rounded_12_auc_original": 0.9750433776749566
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed7",
+            1
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9756630587457654,
+          "rounded_12_auc_original": 0.9756630587457654
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed7",
+            3
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9793687515492028,
+          "rounded_12_auc_original": 0.9793687515492028
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "ET_seed7",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.974361728497067,
+          "rounded_12_auc_original": 0.974361728497067
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "Selected",
+            1
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9760059489382799,
+          "rounded_12_auc_original": 0.9760059489382799
+        },
+        {
+          "key": [
+            "matbench_expt_is_metal",
+            "C",
+            "Selected",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9739486077831943,
+          "rounded_12_auc_original": 0.9739486077831943
+        },
+        {
+          "key": [
+            "matbench_glass",
+            "B",
+            "ET",
+            1
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9435317115060846,
+          "rounded_12_auc_original": 0.9435317115060846
+        }
+      ],
+      "scientific_audit": {
+        "pass_all": true,
+        "official_tasks": [
+          "matbench_steels",
+          "matbench_jdft2d",
+          "matbench_expt_gap",
+          "matbench_expt_is_metal",
+          "matbench_glass"
+        ],
+        "outer_folds": 5,
+        "inner_folds": 3,
+        "verified_prediction_folds": 260,
+        "inner_candidate_fits": 1530,
+        "outer_model_refits": 230,
+        "conformal_fits": 15,
+        "linear_ablation_fits": 5,
+        "total_local_fits": 1780,
+        "external_reference_folds": 40,
+        "trained_baselines": [
+          "Linear",
+          "RF",
+          "ET",
+          "XGB"
+        ],
+        "selection_audit": "Every parameter and blend choice reconstructed from inner validation only",
+        "tests": [
+          "official sample identity and order",
+          "train/validation/test separation",
+          "inner score recomputation",
+          "selected configurations equal inner argmin",
+          "blends equal inner-selected member predictions",
+          "seed perturbations keep parameters fixed",
+          "official export validation",
+          "outer metric recomputation",
+          "conformal calibration separation and quantile",
+          "published reference metrics recomputed"
+        ],
+        "saved_xgboost_models_replayed": 30,
+        "csv_precision": "XGBoost float32 values expanded losslessly to float64 text; matched saved-model inference."
+      },
+      "parameter_and_recipe_fields_checked": 230,
+      "selection_changes": []
+    },
+    "v3": {
+      "stage": "v3",
+      "rows": 120,
+      "strict_1e10_match": true,
+      "max_abs_by_metric": {
+        "mae": 2.842170943040401e-14,
+        "rmse": 5.684341886080802e-14,
+        "r2": 1.1102230246251565e-16,
+        "roc_auc": 0.0,
+        "balanced_accuracy": 0.0,
+        "accuracy": 0.0,
+        "f1": 0.0,
+        "brier": 6.938893903907228e-18
+      },
+      "strict_mismatch_count": 0,
+      "scientific_audit": {
+        "pass_all": true,
+        "official_tasks": [
+          "matbench_steels",
+          "matbench_jdft2d",
+          "matbench_expt_gap",
+          "matbench_expt_is_metal",
+          "matbench_glass"
+        ],
+        "outer_folds": 5,
+        "verified_prediction_folds": 120,
+        "replayed_saved_models": 90,
+        "new_inner_fits": 810,
+        "new_outer_refits": 90,
+        "total_new_fits": 900,
+        "preserved_historical_files": {
+          "V1": 887,
+          "V2": 1017
+        },
+        "selection_recomputed": true,
+        "validation": "Official IDs, splits, metrics, exports, model replay and inner-only recipe choice checked"
+      }
+    },
+    "v4": {
+      "stage": "v4",
+      "rows": 85,
+      "strict_1e10_match": false,
+      "max_abs_by_metric": {
+        "mae": 4.263256414560601e-14,
+        "rmse": 5.684341886080802e-14,
+        "r2": 3.3306690738754696e-16,
+        "roc_auc": 1.3182525244403998e-05,
+        "balanced_accuracy": 0.0,
+        "accuracy": 0.0,
+        "f1": 0.0
+      },
+      "strict_mismatch_count": 2,
+      "gate_columns": [
+        "task",
+        "fold",
+        "use_new",
+        "mean_gain",
+        "threshold",
+        "improved_inner_folds",
+        "new_members",
+        "new_operation"
+      ],
+      "scientific_audit": {
+        "pass_all": true,
+        "tasks": [
+          "matbench_steels",
+          "matbench_jdft2d",
+          "matbench_expt_gap",
+          "matbench_expt_is_metal",
+          "matbench_glass"
+        ],
+        "new_representation_tasks": [
+          "matbench_steels",
+          "matbench_jdft2d",
+          "matbench_glass"
+        ],
+        "official_folds": 5,
+        "verified_prediction_folds": 85,
+        "replayed_saved_models": 45,
+        "new_inner_fits": 405,
+        "new_outer_refits": 45,
+        "total_new_fits": 450,
+        "preserved_historical_files": {
+          "V1": 887,
+          "V2": 1017,
+          "V3": 522
+        },
+        "gate_reconstructed": true,
+        "matched_candidate_budgets_verified": true,
+        "model_replay_tolerance": {
+          "rtol": 1e-12,
+          "atol": 1e-10
+        },
+        "unchanged_tasks_exact": true
+      },
+      "differences": [
+        {
+          "key": [
+            "matbench_glass",
+            "D",
+            "ET",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9562490819312777,
+          "rounded_12_auc_original": 0.9562490819312777
+        },
+        {
+          "key": [
+            "matbench_glass",
+            "D",
+            "Selected",
+            4
+          ],
+          "metrics": [
+            "roc_auc"
+          ],
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9580437885824266,
+          "rounded_12_auc_original": 0.9580437885824266
+        }
+      ],
+      "gate_choices_unchanged": true
+    },
+    "final": {
+      "stage": "final",
+      "rows": 115,
+      "strict_1e10_match": false,
+      "max_abs_by_metric": {
+        "mae": 4.263256414560601e-14,
+        "rmse": 5.684341886080802e-14,
+        "r2": 3.3306690738754696e-16,
+        "coverage": 0.0,
+        "width": 9.094947017729282e-13,
+        "roc_auc": 1.883217891962552e-06,
+        "balanced_accuracy": 0.0,
+        "accuracy": 0.0,
+        "f1": 0.0
+      },
+      "strict_mismatch_count": 1,
+      "prediction_files_compared": 116,
+      "prediction_comparison_rtol": 1e-10,
+      "prediction_comparison_atol": 1e-10,
+      "max_prediction_difference": 6.821210263296962e-13,
+      "structural_decision_fields_checked": 191,
+      "selection_changes": [],
+      "predictions": [
+        {
+          "file": "external/predictions.csv",
+          "samples": 5170,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.7373908600206479,
+          "rounded_12_auc_original": 0.7373908600206479
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_2026_fold_0/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_2026_fold_1/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_2026_fold_2/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_2026_fold_3/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 4.440892098500626e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_2026_fold_4/predictions.csv",
+          "samples": 920,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_7_fold_0/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_7_fold_1/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_7_fold_2/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_7_fold_3/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 1.7763568394002505e-15
+        },
+        {
+          "file": "matbench_expt_gap/conditional/seed_7_fold_4/predictions.csv",
+          "samples": 920,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conformal/fold_0/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conformal/fold_1/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_gap/conformal/fold_2/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 1.7763568394002505e-15
+        },
+        {
+          "file": "matbench_expt_gap/conformal/fold_3/predictions.csv",
+          "samples": 921,
+          "max_prediction_difference": 4.440892098500626e-16
+        },
+        {
+          "file": "matbench_expt_gap/conformal/fold_4/predictions.csv",
+          "samples": 920,
+          "max_prediction_difference": 8.881784197001252e-16
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_2026_fold_0/predictions.csv",
+          "samples": 985,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9801446275880834,
+          "rounded_12_auc_original": 0.9801446275880834
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_2026_fold_1/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9769809138230191,
+          "rounded_12_auc_original": 0.9769809138230191
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_2026_fold_2/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9790258613566885,
+          "rounded_12_auc_original": 0.9790258613566885
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_2026_fold_3/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9806866066264562,
+          "rounded_12_auc_original": 0.9806866066264562
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_2026_fold_4/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9758530942741469,
+          "rounded_12_auc_original": 0.9758530942741469
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_7_fold_0/predictions.csv",
+          "samples": 985,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9803342760787289,
+          "rounded_12_auc_original": 0.9803342760787289
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_7_fold_1/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9774849210939437,
+          "rounded_12_auc_original": 0.9774849210939437
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_7_fold_2/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9783276873502438,
+          "rounded_12_auc_original": 0.9783276873502438
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_7_fold_3/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9810418904403867,
+          "rounded_12_auc_original": 0.9810418904403867
+        },
+        {
+          "file": "matbench_expt_is_metal/conditional/seed_7_fold_4/predictions.csv",
+          "samples": 984,
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9748368173180204,
+          "rounded_12_auc_original": 0.9748368173180204
+        },
+        {
+          "file": "matbench_glass/common_pool/C_fold_0/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9663770277548652,
+          "rounded_12_auc_original": 0.9663770277548652
+        },
+        {
+          "file": "matbench_glass/common_pool/C_fold_1/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9506107275624004,
+          "rounded_12_auc_original": 0.9506107275624004
+        },
+        {
+          "file": "matbench_glass/common_pool/C_fold_2/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.945802872283929,
+          "rounded_12_auc_original": 0.945802872283929
+        },
+        {
+          "file": "matbench_glass/common_pool/C_fold_3/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9555711234901302,
+          "rounded_12_auc_original": 0.9555711234901302
+        },
+        {
+          "file": "matbench_glass/common_pool/C_fold_4/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9570626320606546,
+          "rounded_12_auc_original": 0.9570626320606546
+        },
+        {
+          "file": "matbench_glass/common_pool/D_fold_0/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.968335574362625,
+          "rounded_12_auc_original": 0.968335574362625
+        },
+        {
+          "file": "matbench_glass/common_pool/D_fold_1/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9519402793942064,
+          "rounded_12_auc_original": 0.9519402793942064
+        },
+        {
+          "file": "matbench_glass/common_pool/D_fold_2/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9454770755885997,
+          "rounded_12_auc_original": 0.9454770755885997
+        },
+        {
+          "file": "matbench_glass/common_pool/D_fold_3/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9557104816141437,
+          "rounded_12_auc_original": 0.9557104816141437
+        },
+        {
+          "file": "matbench_glass/common_pool/D_fold_4/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 1.1102230246251565e-16,
+          "rounded_12_auc_fresh": 0.9580437885824266,
+          "rounded_12_auc_original": 0.9580437885824266
+        },
+        {
+          "file": "matbench_glass/conditional/seed_2026_fold_0/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9670888841180703,
+          "rounded_12_auc_original": 0.9670888841180703
+        },
+        {
+          "file": "matbench_glass/conditional/seed_2026_fold_1/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9512547880814907,
+          "rounded_12_auc_original": 0.9512547880814907
+        },
+        {
+          "file": "matbench_glass/conditional/seed_2026_fold_2/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9444074078259003,
+          "rounded_12_auc_original": 0.9444074078259003
+        },
+        {
+          "file": "matbench_glass/conditional/seed_2026_fold_3/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9550438224803486,
+          "rounded_12_auc_original": 0.9550438224803486
+        },
+        {
+          "file": "matbench_glass/conditional/seed_2026_fold_4/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9565466303582256,
+          "rounded_12_auc_original": 0.9565466303582256
+        },
+        {
+          "file": "matbench_glass/conditional/seed_7_fold_0/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9672659065999254,
+          "rounded_12_auc_original": 0.9672659065999254
+        },
+        {
+          "file": "matbench_glass/conditional/seed_7_fold_1/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9508103486589605,
+          "rounded_12_auc_original": 0.9508103486589605
+        },
+        {
+          "file": "matbench_glass/conditional/seed_7_fold_2/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9462190634380779,
+          "rounded_12_auc_original": 0.9462190634380779
+        },
+        {
+          "file": "matbench_glass/conditional/seed_7_fold_3/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 2.220446049250313e-16,
+          "rounded_12_auc_fresh": 0.9558573726097257,
+          "rounded_12_auc_original": 0.9558573726097257
+        },
+        {
+          "file": "matbench_glass/conditional/seed_7_fold_4/predictions.csv",
+          "samples": 1136,
+          "max_prediction_difference": 0.0,
+          "rounded_12_auc_fresh": 0.9581322998233542,
+          "rounded_12_auc_original": 0.9581322998233542
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/C_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/C_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/C_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/C_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/C_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/D_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/D_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 5.684341886080802e-14
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/D_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 5.684341886080802e-14
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/D_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/common_pool/D_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 2.842170943040401e-14
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_2026_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_2026_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_2026_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_2026_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_2026_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_7_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_7_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_7_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_7_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conditional/seed_7_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conformal/fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conformal/fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conformal/fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conformal/fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/conformal/fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_2026_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_2026_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_2026_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_2026_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_2026_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_7_fold_0/predictions.csv",
+          "samples": 128,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_7_fold_1/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_7_fold_2/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_7_fold_3/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_jdft2d/reselection/seed_7_fold_4/predictions.csv",
+          "samples": 127,
+          "max_prediction_difference": 0.0
+        },
+        {
+          "file": "matbench_steels/common_pool/C_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/C_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/C_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/C_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/C_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/D_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/D_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/D_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/D_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/common_pool/D_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_2026_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_2026_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_2026_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_2026_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_2026_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_7_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_7_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_7_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_7_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/conditional/seed_7_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conformal/fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conformal/fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conformal/fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/conformal/fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/conformal/fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_2026_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_2026_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_2026_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_2026_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_2026_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_7_fold_0/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 6.821210263296962e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_7_fold_1/predictions.csv",
+          "samples": 63,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_7_fold_2/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 2.2737367544323206e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_7_fold_3/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        },
+        {
+          "file": "matbench_steels/reselection/seed_7_fold_4/predictions.csv",
+          "samples": 62,
+          "max_prediction_difference": 4.547473508864641e-13
+        }
+      ],
+      "scientific_audit": {
+        "pass_all": true,
+        "historical_files_preserved": {
+          "V1": 887,
+          "V2": 1017,
+          "V3": 522,
+          "V4": 349
+        },
+        "official_tasks": [
+          "matbench_steels",
+          "matbench_jdft2d",
+          "matbench_expt_gap",
+          "matbench_expt_is_metal",
+          "matbench_glass"
+        ],
+        "outer_folds": 5,
+        "validated_outer_prediction_files": 115,
+        "replayed_bundles": 86,
+        "inner_candidate_fits": 3789,
+        "final_component_refits": 200,
+        "total_new_fits": 3989,
+        "external_primary_n": 5122,
+        "source_checksum_verified": true,
+        "conformal_selection_calibration_separated": true,
+        "common_pool_reconstructed": true,
+        "limitations": [
+          "Full reselection seed experiment covers steels and jdft2d, conditional refit covers five tasks.",
+          "External validation covers glass under changed processing conditions, not all five properties.",
+          "Published strong-model results are rescored archives, not matched-budget local retraining."
+        ]
+      },
+      "external_primary": {
+        "n": 5122,
+        "positive_fraction": 0.30632565404139006,
+        "brier": 0.5247392457055654,
+        "roc_auc": 0.7460147772320342,
+        "balanced_accuracy": 0.5273008725021109,
+        "accuracy": 0.34420148379539245,
+        "f1": 0.48299215022317993
+      }
+    }
+  },
+  "log_checksums": {
+    "minimum": {
+      "sha256": "c21d2aee99a6c842571e6d3da395439dc2b71c501094cc456eb0db5a37f7c25c",
+      "bytes": 100138
+    },
+    "v2": {
+      "sha256": "e6b99ad2ac944deecaeecac6772c6fe13d10b377e5600c8592200cf3c6a44e5d",
+      "bytes": 75656
+    },
+    "v3": {
+      "sha256": "013441a725ffa2cf1172fd39b40cdf2ba2684ef5836542b70444ef2e9c0ce95a",
+      "bytes": 28788
+    },
+    "v4": {
+      "sha256": "ea08f120f6c153879c288bcab601da611e41e031116343b70de14b0e464ed736",
+      "bytes": 73236
+    },
+    "final": {
+      "sha256": "9decf2cc9931d9e4ce68b5ac4ecec2e2351ece07be7b298f5f5dc99fc3e26606",
+      "bytes": 5785
+    }
+  },
+  "numerical_runtime": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.14",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 10,
+        "prefix": "libomp",
+        "version": null
+      }
+    ],
+    "numpy_blas": {
+      "name": "accelerate",
+      "version": "unknown",
+      "openblas configuration": "unknown"
+    }
+  },
+  "interpretation": "All stage audits passed independently. Metric identity at 1e-10 is not universal: tiny prediction differences change near-tied ROC-AUC rankings. Original outputs and scores were not rounded or modified to force agreement.",
+  "limitations": [
+    "This is reproducibility of an exploratory benchmark, not a new blind generalization test.",
+    "DOCX and native presentation builds were not repeated.",
+    "Linux is separately verified for minimum only; Windows/WSL2 remains untested."
+  ]
+}

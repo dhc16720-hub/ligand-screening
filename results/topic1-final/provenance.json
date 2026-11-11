@@ -57,5 +57,27 @@
       "source": "outputs/topic1/requirement_audit.json",
       "sha256": "40e9cdef059a1ef06560905d2a42d94e0150cce8f4f0f9d49a4551ffb4fb3e75"
     }
+  },
+  "reproduction_files": {
+    "reproduction_check.json": {
+      "source": "Scope summary of the independent clean-clone audit",
+      "sha256": "2601c5f367e0d3bcaef02580fb0444026b30472fdb7495cca7d1a4d5710f017d"
+    },
+    "reproduction_minimum_audit.json": {
+      "source": "Independent macOS clone: outputs/topic1/requirement_audit.json",
+      "sha256": "40e9cdef059a1ef06560905d2a42d94e0150cce8f4f0f9d49a4551ffb4fb3e75"
+    },
+    "reproduction_full_audit.json": {
+      "source": "Independent macOS clone: all five stage audits, log hashes and comparisons",
+      "sha256": "b9b66dabb50b63ef4a1dd5801c412bebae0ecbfb8e3e6674f4d40491807f9282"
+    },
+    "reproduction_linux_audit.json": {
+      "source": "GitHub Actions runs 42977352926 and 42982176504; downloaded artifact SHA verified",
+      "sha256": "8e86e6b07b12eddd7e39f9376141e0a31e459527439e210597678299e235cbd1"
+    },
+    "reproduction_fold_metrics.csv": {
+      "source": "900 macOS rows across five stages + 320 Ubuntu minimum rows from run 42982176504; timing columns omitted",
+      "sha256": "101a7399e025d84d943676c27f97d472ab270a0b1aa22bb9b575fe5cf07584f0"
+    }
   }
 }

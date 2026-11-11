@@ -1,0 +1,534 @@
+{
+  "status": "success",
+  "run_url": "https://github.com/dhc16720-hub/ligand-screening/actions/runs/42982176504",
+  "commit": "e1f2b3a754c6aaed8dbf9ea8f58d6499cbe6c42c",
+  "platform": "Ubuntu 24.04.5 x86_64 GitHub-hosted runner",
+  "python": "3.12.16",
+  "scope": "minimum",
+  "original_tests": 18,
+  "reproduction_tests": 4,
+  "artifact_sha256": "4591d2769f67e272b39f52135915c8d134a451be1a03d9032d4be0a24dbe1ba6",
+  "scientific_audit": {
+    "pass_all": true,
+    "tasks": [
+      {
+        "task": "matbench_steels",
+        "samples": 312,
+        "official_folds": 5,
+        "representations": [
+          "A",
+          "B",
+          "C"
+        ],
+        "substantive_models": [
+          "Linear",
+          "RF",
+          "ET"
+        ],
+        "reference": "Dummy",
+        "fold_predictions_verified": 60
+      },
+      {
+        "task": "matbench_jdft2d",
+        "samples": 636,
+        "official_folds": 5,
+        "representations": [
+          "A",
+          "B",
+          "C",
+          "C_structure"
+        ],
+        "substantive_models": [
+          "Linear",
+          "RF",
+          "ET"
+        ],
+        "reference": "Dummy",
+        "fold_predictions_verified": 80
+      },
+      {
+        "task": "matbench_expt_gap",
+        "samples": 4604,
+        "official_folds": 5,
+        "representations": [
+          "A",
+          "B",
+          "C"
+        ],
+        "substantive_models": [
+          "Linear",
+          "RF",
+          "ET"
+        ],
+        "reference": "Dummy",
+        "fold_predictions_verified": 60
+      },
+      {
+        "task": "matbench_expt_is_metal",
+        "samples": 4921,
+        "official_folds": 5,
+        "representations": [
+          "A",
+          "B",
+          "C"
+        ],
+        "substantive_models": [
+          "Linear",
+          "RF",
+          "ET"
+        ],
+        "reference": "Dummy",
+        "fold_predictions_verified": 60
+      },
+      {
+        "task": "matbench_glass",
+        "samples": 5680,
+        "official_folds": 5,
+        "representations": [
+          "A",
+          "B",
+          "C"
+        ],
+        "substantive_models": [
+          "Linear",
+          "RF",
+          "ET"
+        ],
+        "reference": "Dummy",
+        "fold_predictions_verified": 60
+      }
+    ],
+    "total_main_fits": 320,
+    "official_validation_sha256": "94c17bc3dac32c67d33d69289927a5fec174497e74bbc47293e23d3d147e9a6d",
+    "checks": [
+      "exact official train/test IDs and order",
+      "each sample tested once per configuration",
+      "three substantive models in every task",
+      "saved targets match official data",
+      "all metrics recomputed from saved predictions",
+      "all official result files validate",
+      "classification ROC-AUC uses probabilities"
+    ],
+    "limitations": [
+      "No external SOTA reproduction",
+      "No hyperparameter search",
+      "Fold SD is not a confidence interval"
+    ],
+    "learning_fits": 40,
+    "diagnostic_refits": 2,
+    "learning_points_verified": 50,
+    "raw_dataset_hashes_verified": 5
+  },
+  "mac_comparison_rows": 320,
+  "strict_1e10_match": false,
+  "max_abs_metric_differences": {
+    "mae": 1.641193548387065,
+    "rmse": 3.9879404620566277,
+    "r2": 0.042139365155930975,
+    "roc_auc": 0.0025536434616557635,
+    "balanced_accuracy": 0.007937763415102661,
+    "accuracy": 0.0061619718309859906,
+    "f1": 0.004179924526096279
+  },
+  "strict_mismatch_count": 488,
+  "limitations": [
+    "V2-V4 and final were not retrained on Linux in this run.",
+    "Windows/WSL2 was not tested.",
+    "Two independent Ubuntu runs also differ on some Linear classification baselines (maximum fold ROC-AUC difference 0.0020284); RF/ET metrics are stable up to floating-point noise. Exact solver/hardware contributions have not been isolated."
+  ],
+  "primary_representation_comparison": [
+    {
+      "task": "matbench_steels",
+      "representation": "C",
+      "model": "Linear",
+      "metric": "mae",
+      "linux_mean": 155.3946237092399,
+      "mac_mean": 155.39462370923982,
+      "absolute_mean_difference": 8.526512829121202e-14,
+      "mac_fold_sd": 28.096120607750777
+    },
+    {
+      "task": "matbench_steels",
+      "representation": "C",
+      "model": "RF",
+      "metric": "mae",
+      "linux_mean": 94.520380030722,
+      "mac_mean": 94.38851223758323,
+      "absolute_mean_difference": 0.13186779313876684,
+      "mac_fold_sd": 9.24768762838398
+    },
+    {
+      "task": "matbench_steels",
+      "representation": "C",
+      "model": "ET",
+      "metric": "mae",
+      "linux_mean": 81.07509836149515,
+      "mac_mean": 81.08940097286222,
+      "absolute_mean_difference": 0.01430261136707145,
+      "mac_fold_sd": 8.424927810344798
+    },
+    {
+      "task": "matbench_jdft2d",
+      "representation": "C_structure",
+      "model": "Linear",
+      "metric": "mae",
+      "linux_mean": 67.20827854490639,
+      "mac_mean": 67.20827854490605,
+      "absolute_mean_difference": 3.410605131648481e-13,
+      "mac_fold_sd": 8.82743867103864
+    },
+    {
+      "task": "matbench_jdft2d",
+      "representation": "C_structure",
+      "model": "RF",
+      "metric": "mae",
+      "linux_mean": 41.57417548531757,
+      "mac_mean": 41.856603770827,
+      "absolute_mean_difference": 0.28242828550943244,
+      "mac_fold_sd": 8.595501317887287
+    },
+    {
+      "task": "matbench_jdft2d",
+      "representation": "C_structure",
+      "model": "ET",
+      "metric": "mae",
+      "linux_mean": 40.59139731096781,
+      "mac_mean": 40.59139731096781,
+      "absolute_mean_difference": 0.0,
+      "mac_fold_sd": 9.400615533546308
+    },
+    {
+      "task": "matbench_expt_gap",
+      "representation": "C",
+      "model": "Linear",
+      "metric": "mae",
+      "linux_mean": 15.850756545797825,
+      "mac_mean": 15.850756545797495,
+      "absolute_mean_difference": 3.304023721284466e-13,
+      "mac_fold_sd": 33.75068322469496
+    },
+    {
+      "task": "matbench_expt_gap",
+      "representation": "C",
+      "model": "RF",
+      "metric": "mae",
+      "linux_mean": 0.42869644356671904,
+      "mac_mean": 0.4281557727764628,
+      "absolute_mean_difference": 0.0005406707902562702,
+      "mac_fold_sd": 0.020225505104641696
+    },
+    {
+      "task": "matbench_expt_gap",
+      "representation": "C",
+      "model": "ET",
+      "metric": "mae",
+      "linux_mean": 0.37954089607232216,
+      "mac_mean": 0.37929324618798094,
+      "absolute_mean_difference": 0.0002476498843412278,
+      "mac_fold_sd": 0.024022610382380596
+    },
+    {
+      "task": "matbench_expt_is_metal",
+      "representation": "C",
+      "model": "Linear",
+      "metric": "roc_auc",
+      "linux_mean": 0.9447125815703064,
+      "mac_mean": 0.944733237606,
+      "absolute_mean_difference": 2.065603569367802e-05,
+      "mac_fold_sd": 0.004776322309520114
+    },
+    {
+      "task": "matbench_expt_is_metal",
+      "representation": "C",
+      "model": "RF",
+      "metric": "roc_auc",
+      "linux_mean": 0.9746659300609348,
+      "mac_mean": 0.9746320608934884,
+      "absolute_mean_difference": 3.3869167446409776e-05,
+      "mac_fold_sd": 0.0023200657259670318
+    },
+    {
+      "task": "matbench_expt_is_metal",
+      "representation": "C",
+      "model": "ET",
+      "metric": "roc_auc",
+      "linux_mean": 0.9766185859222933,
+      "mac_mean": 0.976708889398582,
+      "absolute_mean_difference": 9.030347628868896e-05,
+      "mac_fold_sd": 0.001748410584776711
+    },
+    {
+      "task": "matbench_glass",
+      "representation": "C",
+      "model": "Linear",
+      "metric": "roc_auc",
+      "linux_mean": 0.8602701287744395,
+      "mac_mean": 0.8602927273891444,
+      "absolute_mean_difference": 2.259861470488289e-05,
+      "mac_fold_sd": 0.010711104321734695
+    },
+    {
+      "task": "matbench_glass",
+      "representation": "C",
+      "model": "RF",
+      "metric": "roc_auc",
+      "linux_mean": 0.9485184724843034,
+      "mac_mean": 0.9487180935808635,
+      "absolute_mean_difference": 0.00019962109656002092,
+      "mac_fold_sd": 0.007670571181152427
+    },
+    {
+      "task": "matbench_glass",
+      "representation": "C",
+      "model": "ET",
+      "metric": "roc_auc",
+      "linux_mean": 0.9542306489945499,
+      "mac_mean": 0.9543907225153765,
+      "absolute_mean_difference": 0.00016007352082658688,
+      "mac_fold_sd": 0.009217550304041982
+    }
+  ],
+  "feature_sample_hash_matches": 18,
+  "feature_sample_hashes_compared": 21,
+  "feature_hash_differences": [
+    "matbench_jdft2d/features_C_structure.npy",
+    "matbench_steels/features_A.npy",
+    "matbench_steels/features_C.npy"
+  ],
+  "cross_platform_interpretation": "Identical source, protocol, sample IDs and official folds; scientific audits pass independently. Cross-platform numeric identity fails. Some feature hashes differ; precise contributions from native libraries, floating point and solver/tree sensitivity have not been isolated. No tolerance or stored prediction was altered to force agreement.",
+  "previous_successful_run": "https://github.com/dhc16720-hub/ligand-screening/actions/runs/42977352926",
+  "feature_array_comparison": [
+    {
+      "file": "matbench_steels/features_B.npy",
+      "shape": [
+        312,
+        132
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_steels/features_C.npy",
+      "shape": [
+        312,
+        253
+      ],
+      "max_abs": 1.1102230246251565e-16,
+      "different_cells": 1
+    },
+    {
+      "file": "matbench_steels/features_A.npy",
+      "shape": [
+        312,
+        121
+      ],
+      "max_abs": 1.1102230246251565e-16,
+      "different_cells": 1
+    },
+    {
+      "file": "matbench_glass/features_B.npy",
+      "shape": [
+        5680,
+        132
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_glass/features_C.npy",
+      "shape": [
+        5680,
+        253
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_glass/features_A.npy",
+      "shape": [
+        5680,
+        121
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_is_metal/features_B.npy",
+      "shape": [
+        4921,
+        132
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_is_metal/features_C.npy",
+      "shape": [
+        4921,
+        253
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_is_metal/features_A.npy",
+      "shape": [
+        4921,
+        121
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_jdft2d/features_C_structure.npy",
+      "shape": [
+        636,
+        259
+      ],
+      "max_abs": 2.842170943040401e-14,
+      "different_cells": 54
+    },
+    {
+      "file": "matbench_jdft2d/features_B.npy",
+      "shape": [
+        636,
+        132
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_jdft2d/features_C.npy",
+      "shape": [
+        636,
+        253
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_jdft2d/features_A.npy",
+      "shape": [
+        636,
+        121
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_gap/features_B.npy",
+      "shape": [
+        4604,
+        132
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_gap/features_C.npy",
+      "shape": [
+        4604,
+        253
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    },
+    {
+      "file": "matbench_expt_gap/features_A.npy",
+      "shape": [
+        4604,
+        121
+      ],
+      "max_abs": 0.0,
+      "different_cells": 0
+    }
+  ],
+  "numerical_runtime": {
+    "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "python": "3.12.16",
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 4,
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 4,
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 4,
+        "prefix": "libgomp",
+        "version": null
+      }
+    ]
+  },
+  "prediction_sample_identity_and_targets_checked": 320,
+  "official_fold_files_equal": 5,
+  "max_prediction_difference_by_task": {
+    "matbench_steels": 70.42600000000016,
+    "matbench_glass": 0.15000000000000002,
+    "matbench_expt_is_metal": 0.10999999999999999,
+    "matbench_jdft2d": 62.47548511255411,
+    "matbench_expt_gap": 0.9189999999999996
+  },
+  "linux_repeat_max_metric_differences": {
+    "mae": 1.8047785488306545e-12,
+    "rmse": 5.4797055781818926e-11,
+    "r2": 7.404014468193054e-08,
+    "roc_auc": 0.0020284227051144965,
+    "balanced_accuracy": 0.003061224489795844,
+    "accuracy": 0.0030487804878048808,
+    "f1": 0.003510045993706079
+  },
+  "linux_repeat_differences_by_model": {
+    "Dummy": {
+      "mae": 0.0,
+      "rmse": 0.0,
+      "r2": 0.0,
+      "roc_auc": 0.0,
+      "balanced_accuracy": 0.0,
+      "accuracy": 0.0,
+      "f1": 0.0
+    },
+    "ET": {
+      "mae": 5.684341886080802e-14,
+      "rmse": 2.842170943040401e-14,
+      "r2": 4.440892098500626e-16,
+      "roc_auc": 0.0,
+      "balanced_accuracy": 0.0,
+      "accuracy": 0.0,
+      "f1": 0.0
+    },
+    "Linear": {
+      "mae": 1.8047785488306545e-12,
+      "rmse": 5.4797055781818926e-11,
+      "r2": 7.404014468193054e-08,
+      "roc_auc": 0.0020284227051144965,
+      "balanced_accuracy": 0.003061224489795844,
+      "accuracy": 0.0030487804878048808,
+      "f1": 0.003510045993706079
+    },
+    "RF": {
+      "mae": 5.684341886080802e-14,
+      "rmse": 5.684341886080802e-14,
+      "r2": 4.440892098500626e-16,
+      "roc_auc": 0.0,
+      "balanced_accuracy": 0.0,
+      "accuracy": 0.0,
+      "f1": 0.0
+    }
+  }
+}

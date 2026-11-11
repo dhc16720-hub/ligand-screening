@@ -1,6 +1,6 @@
 # Topic 1 公开结果摘要
 
-这些文件逐字复制自本地冻结实验产物，来源映射见 `provenance.json`，SHA-256 可核验。V4 是主方法；final 为补充验证，不用补充测试结果重新挑选主方法。
+原实验摘要逐字复制自冻结产物，来源映射见 `provenance.json`，SHA-256 可核验。`reproduction_*` 文件记录独立克隆后的重新训练和跨平台验证，应与原实验分开阅读。V4 是主方法；final 为补充验证，不用补充测试结果重新挑选主方法。
 
 | 文件 | 内容 |
 |---|---|
@@ -8,6 +8,9 @@
 | baseline_v2_summary.csv / reference_fold_metrics.csv | 优化基线、表示消融与强模型归档重评分 |
 | learning_curve.csv | 两任务固定 RF 的小样本学习曲线 |
 | reproduction_check.json / reproduction_minimum_audit.json | 本次干净克隆的实际验证范围与五任务审计 |
+| reproduction_full_audit.json | macOS 全链路 7,481 次拟合、各阶段独立审计及与原结果比较 |
+| reproduction_linux_audit.json | 独立 Ubuntu minimum 运行、平台信息及跨平台差异 |
+| reproduction_fold_metrics.csv | 本次实测逐折指标；platform/run_stage 区分平台和阶段，final 的 stage 区分补充实验；不含耗时 |
 | source_manifest.json | 公开源码、文档和摘要的完整性清单，不代表训练通过 |
 | v4_summary.csv / v4_fold_metrics.csv | V4 各方法汇总与官方逐折指标 |
 | matched_representation_controls.csv | 相同模型、搜索预算的物理表示对照 |
