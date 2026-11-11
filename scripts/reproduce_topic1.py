@@ -199,18 +199,22 @@ def stage(name):
             check_outputs(['topic1_v4']); return
         module('topic1.physics'); module('topic1.physics_report')
     else:
+        if (ROOT/'outputs/topic1_final/verification_manifest.json').exists():
+            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py'])
+            return
         download_external()
         module('topic1.final_equivalence')
         for step in ['conditional', 'reselection', 'conformal', 'common_pool']:
             module('topic1.final_validation', step)
         for mod in ['final_external', 'final_audit', 'final_report_data']:
             module('topic1.'+mod)
+        run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py', '--seal'])
         print('FINAL SCIENTIFIC AUDIT COMPLETE. DOCX/native slides are optional separate presentation builds.')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage', choices=['setup','check-public','preflight','test','minimum','v2','v3','v4','final','all','check-outputs','download-external'])
+    parser.add_argument('stage', choices=['setup','check-public','preflight','test','minimum','v2','v3','v4','final','all','check-outputs','check-complete','seal-final','download-external','small-data','check-small-data','external-diagnostics'])
     args = parser.parse_args()
     if args.stage == 'setup': setup()
     elif args.stage == 'check-public': check_public()
@@ -219,9 +223,29 @@ def main():
     else:
         preflight()
         if args.stage == 'preflight': return
+        if args.stage in ['check-complete', 'seal-final']:
+            extra = ['--seal'] if args.stage == 'seal-final' else []
+            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py', *extra])
+            return
+        if args.stage in ['small-data', 'check-small-data']:
+            check_outputs(['topic1']); audit_passed('topic1')
+            manifest=ROOT/'outputs/topic1_small_data/delivery_manifest.json'
+            if manifest.exists(): check_manifest(ROOT,manifest)
+            elif args.stage=='check-small-data': raise RuntimeError('Missing small-data delivery manifest; run small-data first')
+            if args.stage=='small-data': module('experiments.small_data','run')
+            module('experiments.small_data','audit')
+            module('experiments.study_report')
+            check_manifest(ROOT,manifest)
+            return
+        if args.stage=='external-diagnostics':
+            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py'])
+            module('experiments.external_diagnostics')
+            return
         if args.stage == 'test':
             module('unittest', 'discover', '-s', 'tests', '-p', 'test_topic1*.py')
             module('unittest', 'discover', '-s', 'tests', '-p', 'test_reproduction.py')
+            module('unittest', 'discover', '-s', 'tests', '-p', 'test_small_data.py')
+            module('unittest', 'discover', '-s', 'tests', '-p', 'test_external_diagnostics.py')
         elif args.stage == 'all':
             for name in ['minimum','v2','v3','v4','final']: stage(name)
         else: stage(args.stage)
