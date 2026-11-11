@@ -133,3 +133,36 @@ class ReleaseTests(unittest.TestCase):
     def test_paths_and_local_secrets_rejected(self):
         for name in ['../a', '/tmp/a', '.env.local', 'folder/../../a', 'a\\b']:
             with self.assertRaises(RuntimeError): packaging.safe_name(name)
+
+
+class PublicCommandStatusTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory(); self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        p = patch.object(project.runner, 'ROOT', self.root); p.start(); self.addCleanup(p.stop)
+        project.atomic_json(self.root/project.REPORT, {'status':'passed', 'pass_all':True})
+
+    def assert_failed(self):
+        result = json.loads((self.root/project.REPORT).read_text())
+        self.assertEqual(result['status'], 'failed'); self.assertFalse(result['pass_all'])
+
+    def test_public_preflight_failure_invalidates_previous_success(self):
+        with patch.object(project.runner, 'preflight', side_effect=RuntimeError('wrong package')):
+            with self.assertRaises(RuntimeError): project.runner.project_command('check-project')
+        self.assert_failed()
+
+    def test_training_stage_failure_invalidates_previous_success(self):
+        with patch.object(project.runner, 'preflight'), patch.object(project.runner, 'run', side_effect=RuntimeError('fit failed')):
+            with self.assertRaises(RuntimeError): project.runner.project_command('project')
+        self.assert_failed()
+
+    def test_zero_exit_without_new_full_audit_is_not_success(self):
+        with patch.object(project.runner, 'preflight'), patch.object(project.runner, 'run'):
+            with self.assertRaisesRegex(RuntimeError, 'complete successful audit'):
+                project.runner.project_command('check-project')
+        self.assert_failed()
+
+    def test_public_interrupt_is_recorded(self):
+        with patch.object(project.runner, 'preflight', side_effect=KeyboardInterrupt):
+            with self.assertRaises(KeyboardInterrupt): project.runner.project_command('project')
+        self.assert_failed()
