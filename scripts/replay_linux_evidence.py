@@ -90,7 +90,7 @@ def main():
                   source_run=43019918648, source_artifact=13866411278)
     atomic_json(target, record)
     try:
-        runner.check_public()
+        runner.preflight()
         checked, missing = check_available_artifacts(root)
         record['missing_original_manifest_files'] = missing
         record['complete_original_archive'] = not missing
