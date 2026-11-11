@@ -1,0 +1,162 @@
+[
+  {
+    "task": "matbench_steels",
+    "representation": "A",
+    "shape": [
+      312,
+      121
+    ],
+    "byte_identical": false,
+    "max_abs_difference": 1.1102230246251565e-16
+  },
+  {
+    "task": "matbench_steels",
+    "representation": "B",
+    "shape": [
+      312,
+      132
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_steels",
+    "representation": "C",
+    "shape": [
+      312,
+      253
+    ],
+    "byte_identical": false,
+    "max_abs_difference": 1.1102230246251565e-16
+  },
+  {
+    "task": "matbench_jdft2d",
+    "representation": "A",
+    "shape": [
+      636,
+      121
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_jdft2d",
+    "representation": "B",
+    "shape": [
+      636,
+      132
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_jdft2d",
+    "representation": "C",
+    "shape": [
+      636,
+      253
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_jdft2d",
+    "representation": "C_structure",
+    "shape": [
+      636,
+      259
+    ],
+    "byte_identical": false,
+    "max_abs_difference": 2.842170943040401e-14
+  },
+  {
+    "task": "matbench_expt_gap",
+    "representation": "A",
+    "shape": [
+      4604,
+      121
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_expt_gap",
+    "representation": "B",
+    "shape": [
+      4604,
+      132
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_expt_gap",
+    "representation": "C",
+    "shape": [
+      4604,
+      253
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_expt_is_metal",
+    "representation": "A",
+    "shape": [
+      4921,
+      121
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_expt_is_metal",
+    "representation": "B",
+    "shape": [
+      4921,
+      132
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_expt_is_metal",
+    "representation": "C",
+    "shape": [
+      4921,
+      253
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_glass",
+    "representation": "A",
+    "shape": [
+      5680,
+      121
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_glass",
+    "representation": "B",
+    "shape": [
+      5680,
+      132
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  },
+  {
+    "task": "matbench_glass",
+    "representation": "C",
+    "shape": [
+      5680,
+      253
+    ],
+    "byte_identical": true,
+    "max_abs_difference": 0.0
+  }
+]

@@ -8,4 +8,4 @@
 
 原 V4 主方法保持冻结。这些是此前已查看基准上的探索性补充，不是新的盲测或同算力 SOTA 竞赛。新增两种模型用于表示对照；课程至少三个正式基线的要求仍由原 minimum/V2 实验覆盖。
 
-本轮在 macOS Apple Silicon 实测。Linux 完整优化实验、Windows/WSL2、新增增量研究的跨平台验证仍未完成。小数据审计发现并修复了 CSV 默认读取器的浮点往返精度问题，保留严格目标相等检查；原训练函数、模型与预测未改变，修复记录见 small-data/audit_reader_revision.json。
+原增量研究先在 macOS Apple Silicon 实测；后续已完成 Linux 全训练与保存模型补验收，最新范围及统一验收限制见 [Linux 实测说明](LINUX_VALIDATION.md)。Windows/WSL2 仍未实测。小数据审计发现并修复了 CSV 默认读取器的浮点往返精度问题，保留严格目标相等检查；原训练函数、模型与预测未改变，修复记录见 small-data/audit_reader_revision.json。

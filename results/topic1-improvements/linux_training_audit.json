@@ -1,0 +1,292 @@
+{
+  "training_status": "completed",
+  "workflow_conclusion": "cancelled",
+  "unified_check_project_passed": false,
+  "source_run": 43019918648,
+  "source_commit": "06d0936c552894196c45300b760e2bc41d613a4a",
+  "run_url": "https://github.com/dhc16720-hub/ligand-screening/actions/runs/43019918648",
+  "source_tests_passed": 48,
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "python": "3.12.16",
+  "fits_by_stage": {
+    "minimum": 362,
+    "v2": 1780,
+    "v3": 900,
+    "v4": 450,
+    "final": 3989,
+    "small_data": 1050
+  },
+  "total_training_fits": 8531,
+  "stage_audits": {
+    "topic1": {
+      "pass_all": true,
+      "tasks": [
+        {
+          "task": "matbench_steels",
+          "samples": 312,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_jdft2d",
+          "samples": 636,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C",
+            "C_structure"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 80
+        },
+        {
+          "task": "matbench_expt_gap",
+          "samples": 4604,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_expt_is_metal",
+          "samples": 4921,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        },
+        {
+          "task": "matbench_glass",
+          "samples": 5680,
+          "official_folds": 5,
+          "representations": [
+            "A",
+            "B",
+            "C"
+          ],
+          "substantive_models": [
+            "Linear",
+            "RF",
+            "ET"
+          ],
+          "reference": "Dummy",
+          "fold_predictions_verified": 60
+        }
+      ],
+      "total_main_fits": 320,
+      "official_validation_sha256": "94c17bc3dac32c67d33d69289927a5fec174497e74bbc47293e23d3d147e9a6d",
+      "checks": [
+        "exact official train/test IDs and order",
+        "each sample tested once per configuration",
+        "three substantive models in every task",
+        "saved targets match official data",
+        "all metrics recomputed from saved predictions",
+        "all official result files validate",
+        "classification ROC-AUC uses probabilities"
+      ],
+      "limitations": [
+        "No external SOTA reproduction",
+        "No hyperparameter search",
+        "Fold SD is not a confidence interval"
+      ],
+      "learning_fits": 40,
+      "diagnostic_refits": 2,
+      "learning_points_verified": 50,
+      "raw_dataset_hashes_verified": 5
+    },
+    "topic1_v2": {
+      "pass_all": true,
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "inner_folds": 3,
+      "verified_prediction_folds": 260,
+      "inner_candidate_fits": 1530,
+      "outer_model_refits": 230,
+      "conformal_fits": 15,
+      "linear_ablation_fits": 5,
+      "total_local_fits": 1780,
+      "external_reference_folds": 40,
+      "trained_baselines": [
+        "Linear",
+        "RF",
+        "ET",
+        "XGB"
+      ],
+      "selection_audit": "Every parameter and blend choice reconstructed from inner validation only",
+      "tests": [
+        "official sample identity and order",
+        "train/validation/test separation",
+        "inner score recomputation",
+        "selected configurations equal inner argmin",
+        "blends equal inner-selected member predictions",
+        "seed perturbations keep parameters fixed",
+        "official export validation",
+        "outer metric recomputation",
+        "conformal calibration separation and quantile",
+        "published reference metrics recomputed"
+      ],
+      "saved_xgboost_models_replayed": 30,
+      "csv_precision": "XGBoost float32 values expanded losslessly to float64 text; matched saved-model inference."
+    },
+    "topic1_v3": {
+      "pass_all": true,
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "verified_prediction_folds": 120,
+      "replayed_saved_models": 90,
+      "new_inner_fits": 810,
+      "new_outer_refits": 90,
+      "total_new_fits": 900,
+      "preserved_historical_files": {
+        "V1": 887,
+        "V2": 1017
+      },
+      "selection_recomputed": true,
+      "validation": "Official IDs, splits, metrics, exports, model replay and inner-only recipe choice checked"
+    },
+    "topic1_v4": {
+      "pass_all": true,
+      "tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "new_representation_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_glass"
+      ],
+      "official_folds": 5,
+      "verified_prediction_folds": 85,
+      "replayed_saved_models": 45,
+      "new_inner_fits": 405,
+      "new_outer_refits": 45,
+      "total_new_fits": 450,
+      "preserved_historical_files": {
+        "V1": 887,
+        "V2": 1017,
+        "V3": 522
+      },
+      "gate_reconstructed": true,
+      "matched_candidate_budgets_verified": true,
+      "model_replay_tolerance": {
+        "rtol": 1e-12,
+        "atol": 1e-10
+      },
+      "unchanged_tasks_exact": true
+    },
+    "topic1_final": {
+      "pass_all": true,
+      "historical_files_preserved": {
+        "V1": 887,
+        "V2": 1017,
+        "V3": 522,
+        "V4": 349
+      },
+      "official_tasks": [
+        "matbench_steels",
+        "matbench_jdft2d",
+        "matbench_expt_gap",
+        "matbench_expt_is_metal",
+        "matbench_glass"
+      ],
+      "outer_folds": 5,
+      "validated_outer_prediction_files": 115,
+      "replayed_bundles": 86,
+      "inner_candidate_fits": 3789,
+      "final_component_refits": 200,
+      "total_new_fits": 3989,
+      "external_primary_n": 5122,
+      "source_checksum_verified": true,
+      "conformal_selection_calibration_separated": true,
+      "common_pool_reconstructed": true,
+      "limitations": [
+        "Full reselection seed experiment covers steels and jdft2d, conditional refit covers five tasks.",
+        "External validation covers glass under changed processing conditions, not all five properties.",
+        "Published strong-model results are rescored archives, not matched-budget local retraining."
+      ]
+    }
+  },
+  "small_data_audit": {
+    "pass_all": true,
+    "tasks": [
+      "matbench_steels",
+      "matbench_jdft2d",
+      "matbench_expt_gap",
+      "matbench_expt_is_metal",
+      "matbench_glass"
+    ],
+    "official_folds": 5,
+    "fitted_models": 1050,
+    "replayed_models": 1050,
+    "full_data_repeated": false,
+    "paired_subset_identity_verified": true,
+    "train_only_preprocessing_verified": true,
+    "aggregation": "Subset means within each fold, then descriptive mean/SD over five folds; no independence-based significance claim."
+  },
+  "artifact": {
+    "id": 13866411278,
+    "sha256": "a251565efa4d77d31c88747a72262e56f8fa489b4bd9d682ea6001c50012a395",
+    "bytes": 1347985957,
+    "files": 4764,
+    "verified_manifest_entries_available": 4762,
+    "missing_original_manifest_entries": 1510,
+    "complete_standalone_replay_archive": false
+  },
+  "training_job_log_sha256": "11668e4cd9fdc02a4551e2e116cab292c5055a72e44193d38c8f27524338d51d",
+  "observed_seconds": {
+    "historical_all_including_audits": 7870,
+    "small_data_including_audit_and_report": 1024
+  },
+  "interruption": "Run manually cancelled after all training and small-data audit/report completed; external-diagnostics entry had started, but external diagnostics and unified check-project did not finish.",
+  "followup_url": "https://github.com/dhc16720-hub/ligand-screening/actions/runs/43044885944"
+}

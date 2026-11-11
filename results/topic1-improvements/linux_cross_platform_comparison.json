@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "pass_all": true,
+  "self_check": false,
+  "linux_saved_evidence_replay_passed": true,
+  "linux_unified_check_project_passed": false,
+  "validation_scope": "Saved model replay and external diagnostics, not complete check-project",
+  "source_run": 43019918648,
+  "evidence_record_sha256": "3e29f276208a49aed2c20cc952bbd6f9df5a4e343e75e5c1bcafb31d8f59b07f",
+  "linux_platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "linux_source_manifest_sha256": null,
+  "mac_source_manifest_sha256": "aef783c349fc16253bf8581aa405ea8b4fab9883ef41cd10d5a249b1aebd3dc7",
+  "checked_input_identity": {
+    "topic1/matbench_steels/official_folds.json": "57d50eec731748a889c6a72300ec5c0355a5a8c876763fc4757cc8e22f4a0266",
+    "topic1/matbench_steels/samples.csv": "f22dffd4770a38972d288619487ca77f862f90ccdcc92f297197d667fd0ce613",
+    "topic1/matbench_jdft2d/official_folds.json": "b5f9e4cc4881e3b9547da56b944612e9ef293d4bd21e942639d40990af4fc147",
+    "topic1/matbench_jdft2d/samples.csv": "22abd93dc216fe6bc4fc1fa3f584e21511b40a5e2eef2eadf1876feb7cabb3b6",
+    "topic1/matbench_expt_gap/official_folds.json": "e0177972aef01088e5025678342c9647b0c73607a607bd2b830eb83df663311a",
+    "topic1/matbench_expt_gap/samples.csv": "8d16919293d2456811813d603038bd4e53687a21568241a2c9069109f679f71f",
+    "topic1/matbench_expt_is_metal/official_folds.json": "4ccb020b1b04ffc3fc83fa9e2cfa0b69b88284017148972a0bf5c7c6d7f694c0",
+    "topic1/matbench_expt_is_metal/samples.csv": "e9ba1b623b2f0b2f3428b51040379d5fc99cf9782494857c4c7da56eda6213bc",
+    "topic1/matbench_glass/official_folds.json": "e81b82dbc8c6c7b2560e2f42c142e3dbd9e82002252482cd3374ffe79386f740",
+    "topic1/matbench_glass/samples.csv": "e5fa3e9a627928b05999c09e7cf67c98782146ded6a09f456c6da77e406161b7"
+  },
+  "summary_rows": {
+    "minimum": 64,
+    "v2": 52,
+    "v3": 24,
+    "v4": 17,
+    "final": 23,
+    "small_data": 90,
+    "small_data_paired": 90,
+    "external": 20
+  },
+  "numeric_comparisons": 528,
+  "paired_mean_direction_changes": 0,
+  "steel_low_data_ET": [
+    {
+      "mac": -10.694227376685369,
+      "linux": -10.646789144905211,
+      "delta_linux_minus_mac": 0.04743823178015738
+    }
+  ],
+  "exact_numeric_equality": false,
+  "limitation": "Descriptive paired table comparison, not independent statistical inference or a new external benchmark. Different releases may contain non-scientific runner/doc changes; compare pinned source metadata separately."
+}

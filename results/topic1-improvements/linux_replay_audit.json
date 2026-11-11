@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "replay_passed": true,
+  "training_performed": false,
+  "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "python": "3.12.16",
+  "unified_check_project_passed": false,
+  "scope": "Saved model replay and external diagnostics, not complete check-project",
+  "source_run": 43019918648,
+  "source_artifact": 13866411278,
+  "complete_original_archive": false,
+  "final_model_replays": 86,
+  "small_data": {
+    "pass_all": true,
+    "replayed_models": 1050,
+    "training_performed": false
+  },
+  "original_available_artifacts_unchanged": true,
+  "replay_script_sha256": "780897efff51299f558888b3c5a8da1cb9efbe80549da6a7214cb86dd9e17737",
+  "limitation": "Original Actions artifact omits some historical metadata/models. Original stage audits passed in the source run; this follow-up does not repeat their full audits or claim full archive coverage.",
+  "missing_original_manifest_files_count": 1469,
+  "replay_run": 43044885944,
+  "replay_source_commit": "ea56c8ccd656cddb1845cc9c5da75200e82ea356",
+  "run_url": "https://github.com/dhc16720-hub/ligand-screening/actions/runs/43044885944",
+  "archive_sha256": "642237f059efd73292634ff6c28bbba5eedc8d0cf8ef6d7180c9389d976e51e1",
+  "full_replay_record_sha256": "3e29f276208a49aed2c20cc952bbd6f9df5a4e343e75e5c1bcafb31d8f59b07f"
+}

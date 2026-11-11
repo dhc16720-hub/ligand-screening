@@ -1,0 +1,18 @@
+{
+  "linux_commit": "06d0936c552894196c45300b760e2bc41d613a4a",
+  "release_commit": "6379858dc1ff2f0b131e95eba5973db5b08a78ed",
+  "changed_paths": [
+    "README.md",
+    "RELEASE.md",
+    "REPRODUCING.md",
+    "UPDATES.md",
+    "results/topic1-final/source_manifest.json",
+    "results/topic1-improvements/release_rehearsal.json",
+    "scripts/package_topic1_release.py",
+    "scripts/reproduce_topic1.py",
+    "tests/test_project_delivery.py"
+  ],
+  "scientific_files_checked": 34,
+  "scientific_files_identical": true,
+  "tree_complete": true
+}
