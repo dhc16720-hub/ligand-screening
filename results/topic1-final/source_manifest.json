@@ -2,9 +2,9 @@
   ".github/workflows/topic1-reproduce.yml": "2f3af59ac2dd022cc86910a0d1cf17d96bdaf50728173383095f0dc520846f9e",
   ".gitignore": "c4640501fceacc8f36edf035937b8a8a4f19ca077d7f2023de6b3f26f400a2ca",
   "README.md": "b93f5f5a9798c173175ca217ac1a95b2c646710f783d7b25699436561f2af940",
-  "REPRODUCING.md": "b996e38bab61d356b9fa22ec5889588033f2ac29625126ff3fb90052401e730a",
+  "REPRODUCING.md": "60603999a961e538eae894ab73980d8cc1c2e16996b8d4aea552913a425758b8",
   "RESEARCH_SUMMARY.md": "81221a0bea133201a59f3970f93a4f1f7335e3c71589199d248241e2f112f349",
-  "UPDATES.md": "511ad91d9f0c282a1fe802b726cfaa26e05f51c761f88d0425e4fcf50d2a4f70",
+  "UPDATES.md": "a9ac36efdd431b160a50b25a8b2e753c59e9dc7731a006f617473e0c8d8d2a1c",
   "results/topic1-final/README.md": "b9f9fcdbd394bdb68a15002c8d86fdcb675c63e1558b8a3849d374c192c90ed2",
   "results/topic1-final/baseline_v1_summary.csv": "bf1462ef9d9a018c8bbd1207acde43ce2c27d5bdcae34768f543a637fd3becad",
   "results/topic1-final/baseline_v2_summary.csv": "b8fc2f3c03eb7a3ef11020bafdeb78220d9a6eff65e6da58f90564e155c4264d",
@@ -26,7 +26,7 @@
   "results/topic1-final/v4_summary.csv": "423a5eec04a2a79e2f9592ad8f76f5bbaab46811f4a459def788cd286259f922",
   "results/topic1-final/validation_fold_metrics.csv": "a89dfa68c2f6c135a42e4db4cbad19034e348fb73190d56197a625f2c4480703",
   "results/topic1-final/validation_summary.csv": "1bfc990fea3c1b41308b47b2617428b75688ff2f24111d9f2d8443bb49a009c4",
-  "scripts/reproduce_topic1.py": "1d6bae1d23ae24b7699cf1fb00cacbae3b646fee29f96817c4dc1a6c333f54fa",
+  "scripts/reproduce_topic1.py": "b6be836d56a9e8a7adcff265b23f0ad90bb2f1e61b0ce373e867b5379d284c9d",
   "start_local.command": "3dc0916164f5945a798174ebfad02def19f7c60b560b7a127c20f0aa12d161a5",
   "tests/test_reproduction.py": "8236190c201e288b8d1951bc3fc9b060320f03387bb967859e46a9788795040d",
   "tests/test_topic1.py": "ff1abb5713389d5811e04ae2ed7d9803baf13de2c9d76de40cc47b58601a1391",
@@ -105,7 +105,8 @@
   "results/topic1-improvements/external/reliability.pdf": "0aafe5e87c1e2ff87759bef1ab7c9317e7afc6f99c322f5c2071c7ef418c89a3",
   "results/topic1-improvements/validation.json": "4dbf38434e284bb9cd033e0820eed7f3e2fdb34d8d46e498d53373221cf423b1",
   "scripts/verify_topic1_project.py": "2e7ed01d9b0aa3b08b4a33c2cb37374afefee982db92a15b8941abf57e0370c6",
-  "tests/test_project_delivery.py": "6d53aad6741c25779e8f8dd52d215c53992ca352d5c5dfcc1c12bde47da9ad6e",
+  "tests/test_project_delivery.py": "4095dbbb472bf3fdf8c4ecc6ba7a84ca986dc3b52e1f69a0ad882717cd0b1541",
   "scripts/package_topic1_release.py": "fc3ed424cd46207715980be79e2dba52da823a83355a527cb34fcdbe57718660",
-  "RELEASE.md": "6b94e710ffed9f4e13e19a2e54bde9c55791bffe0c7a700f7307656e542cd41e"
+  "RELEASE.md": "30ca4a2862de064dd178e65eeb2f7d658941035aa9695428d02a36527f1ab446",
+  "results/topic1-improvements/release_rehearsal.json": "60e009b9c1d6609db1a3fb9315c6d313407094ff0a17b6ba79ba59f9a3b5296a"
 }
