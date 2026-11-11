@@ -85,3 +85,51 @@ class ProjectVerificationTests(unittest.TestCase):
             (replay/'metrics.csv').write_text('score\n'+value+'\n')
             with self.assertRaises(AssertionError):
                 project.compare_tables(original, replay, ['metrics.csv'])
+
+import package_topic1_release as packaging
+import zipfile
+
+
+class ReleaseTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory(); self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        (self.root/'a.csv').write_text('value\n1\n')
+        self.entries = {'a.csv': packaging.runner.digest(self.root/'a.csv')}
+        self.destination = self.root/'release.zip'
+
+    def test_archive_round_trip_and_checksum(self):
+        asset = packaging.zip_checked(self.root, self.destination, self.entries)
+        self.assertEqual(packaging.verify_zip(self.destination), 1)
+        self.assertEqual(asset['sha256'], packaging.runner.digest(self.destination))
+
+    def test_source_changed_after_audit_rejected(self):
+        (self.root/'a.csv').write_text('changed')
+        with self.assertRaisesRegex(RuntimeError, 'Changed artifact'):
+            packaging.zip_checked(self.root, self.destination, self.entries)
+        self.assertFalse(self.destination.exists())
+
+    def test_missing_source_rejected(self):
+        (self.root/'a.csv').unlink()
+        with self.assertRaises(FileNotFoundError):
+            packaging.zip_checked(self.root, self.destination, self.entries)
+        self.assertFalse(self.destination.exists())
+
+    def test_existing_release_cannot_be_overwritten(self):
+        packaging.zip_checked(self.root, self.destination, self.entries)
+        before = self.destination.read_bytes()
+        with self.assertRaisesRegex(RuntimeError, 'replace'):
+            packaging.zip_checked(self.root, self.destination, self.entries)
+        self.assertEqual(before, self.destination.read_bytes())
+
+    def test_extra_or_modified_archive_members_rejected(self):
+        for content in ['modified', 'original-with-extra']:
+            with zipfile.ZipFile(self.destination, 'w') as archive:
+                archive.writestr('a.csv', 'bad' if content == 'modified' else (self.root/'a.csv').read_bytes())
+                archive.writestr('release_manifests/files.json', json.dumps(self.entries))
+                if content != 'modified': archive.writestr('unexpected.txt', 'extra')
+            with self.assertRaises(RuntimeError): packaging.verify_zip(self.destination)
+
+    def test_paths_and_local_secrets_rejected(self):
+        for name in ['../a', '/tmp/a', '.env.local', 'folder/../../a', 'a\\b']:
+            with self.assertRaises(RuntimeError): packaging.safe_name(name)
