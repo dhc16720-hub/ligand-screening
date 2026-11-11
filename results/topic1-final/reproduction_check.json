@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-11",
+  "base_fork_commit": "244267be2cbaf0e7596afadf2d37f0d3e4e81782",
+  "patch": "scripts/reproduce_topic1.py plus public reproduction documentation",
+  "runner_sha256": "c77f614c6fee3288028c17b48856031760c701bd1f180ed724934442936b643d",
+  "platform": "macOS Apple Silicon",
+  "python": "3.12.14",
+  "fresh_git_clone": true,
+  "fresh_virtual_environment": true,
+  "existing_model_or_dataset_outputs_copied": false,
+  "package_download_cache_reused": true,
+  "pip_check": "No broken requirements found",
+  "locked_versions_and_official_folds_preflight": "passed",
+  "original_unit_tests_passed": 18,
+  "reproduction_regression_tests_passed": 4,
+  "minimum_stage": "passed",
+  "main_and_structure_fits": 320,
+  "learning_fits": 40,
+  "diagnostic_refits": 2,
+  "official_tasks": 5,
+  "outer_folds": 5,
+  "new_manifest_entries": 887,
+  "original_fold_metrics_compared": 320,
+  "comparison_rtol": 1e-10,
+  "comparison_atol": 1e-10,
+  "maximum_absolute_metric_differences": {
+    "mae": 7.105427357601002e-14,
+    "rmse": 5.684341886080802e-14,
+    "r2": 4.0245584642661925e-16,
+    "roc_auc": 0.0,
+    "balanced_accuracy": 0.0,
+    "accuracy": 0.0,
+    "f1": 0.0
+  },
+  "external_download_sha256": "4a4c60ef227891203570dbc3decb606649b877f6b75289afd4e78fe8e8095e63",
+  "full_v2_through_final_retraining_this_check": false,
+  "limitations": [
+    "New-machine end-to-end training was verified for the minimum stage; V2-V4 and final experiments were previously completed but were not all retrained in this clean clone audit.",
+    "Only macOS Apple Silicon was tested; Linux and WSL2 were not tested.",
+    "DOCX/native slide generation is optional and was not rerun in the clean environment."
+  ]
+}

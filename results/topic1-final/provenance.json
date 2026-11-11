@@ -36,6 +36,26 @@
     "external_result.json": {
       "source": "outputs/topic1_final/external/result.json",
       "sha256": "b4f749f298ba0503dbd00eb738b1c2a6465c854e0372fe5575ace6550e123788"
+    },
+    "baseline_v1_summary.csv": {
+      "source": "outputs/topic1/summary.csv",
+      "sha256": "bf1462ef9d9a018c8bbd1207acde43ce2c27d5bdcae34768f543a637fd3becad"
+    },
+    "baseline_v2_summary.csv": {
+      "source": "outputs/topic1_v2/summary.csv",
+      "sha256": "b8fc2f3c03eb7a3ef11020bafdeb78220d9a6eff65e6da58f90564e155c4264d"
+    },
+    "learning_curve.csv": {
+      "source": "outputs/topic1/learning_curve.csv",
+      "sha256": "c0e668c084d82f53cd723050787a94d93e03581e6296bb70a255ba71248f0543"
+    },
+    "reference_fold_metrics.csv": {
+      "source": "outputs/topic1_v2/reference_fold_metrics.csv",
+      "sha256": "ea6e9efb7fd42403a3e4dc6798ce372e4a3825a12b93bb75b900aa8f069c84cd"
+    },
+    "minimum_requirement_audit.json": {
+      "source": "outputs/topic1/requirement_audit.json",
+      "sha256": "40e9cdef059a1ef06560905d2a42d94e0150cce8f4f0f9d49a4551ffb4fb3e75"
     }
   }
 }

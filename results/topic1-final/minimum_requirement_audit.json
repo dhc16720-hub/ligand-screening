@@ -1,0 +1,111 @@
+{
+  "pass_all": true,
+  "tasks": [
+    {
+      "task": "matbench_steels",
+      "samples": 312,
+      "official_folds": 5,
+      "representations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "substantive_models": [
+        "Linear",
+        "RF",
+        "ET"
+      ],
+      "reference": "Dummy",
+      "fold_predictions_verified": 60
+    },
+    {
+      "task": "matbench_jdft2d",
+      "samples": 636,
+      "official_folds": 5,
+      "representations": [
+        "A",
+        "B",
+        "C",
+        "C_structure"
+      ],
+      "substantive_models": [
+        "Linear",
+        "RF",
+        "ET"
+      ],
+      "reference": "Dummy",
+      "fold_predictions_verified": 80
+    },
+    {
+      "task": "matbench_expt_gap",
+      "samples": 4604,
+      "official_folds": 5,
+      "representations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "substantive_models": [
+        "Linear",
+        "RF",
+        "ET"
+      ],
+      "reference": "Dummy",
+      "fold_predictions_verified": 60
+    },
+    {
+      "task": "matbench_expt_is_metal",
+      "samples": 4921,
+      "official_folds": 5,
+      "representations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "substantive_models": [
+        "Linear",
+        "RF",
+        "ET"
+      ],
+      "reference": "Dummy",
+      "fold_predictions_verified": 60
+    },
+    {
+      "task": "matbench_glass",
+      "samples": 5680,
+      "official_folds": 5,
+      "representations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "substantive_models": [
+        "Linear",
+        "RF",
+        "ET"
+      ],
+      "reference": "Dummy",
+      "fold_predictions_verified": 60
+    }
+  ],
+  "total_main_fits": 320,
+  "official_validation_sha256": "94c17bc3dac32c67d33d69289927a5fec174497e74bbc47293e23d3d147e9a6d",
+  "checks": [
+    "exact official train/test IDs and order",
+    "each sample tested once per configuration",
+    "three substantive models in every task",
+    "saved targets match official data",
+    "all metrics recomputed from saved predictions",
+    "all official result files validate",
+    "classification ROC-AUC uses probabilities"
+  ],
+  "limitations": [
+    "No external SOTA reproduction",
+    "No hyperparameter search",
+    "Fold SD is not a confidence interval"
+  ],
+  "learning_fits": 40,
+  "diagnostic_refits": 2,
+  "learning_points_verified": 50,
+  "raw_dataset_hashes_verified": 5
+}
