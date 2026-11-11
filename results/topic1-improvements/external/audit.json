@@ -1,0 +1,22 @@
+{
+  "pass_all": true,
+  "primary_rows": 5122,
+  "source_training_rows": 5680,
+  "source_positive_fraction": 0.710387323943662,
+  "source_hashes": {
+    "outputs/topic1_final/external/predictions.csv": "360935c704088b7505336330edb55792be538739caa07717478f18a0eb8ce42a",
+    "outputs/topic1_final/external/result.json": "b4f749f298ba0503dbd00eb738b1c2a6465c854e0372fe5575ace6550e123788",
+    "outputs/topic1_final/external/full_training/selection.json": "e4e94f2daf0e4655a82995998e14885d440be8aecc46effd87e4a8725788ccb6"
+  },
+  "code_sha256": "d9f066eed96a255a4776636cdc64349947d63be106125d68cf58d18766b6c5db",
+  "new_fits": 0,
+  "threshold": "prediction > 0.5, same as frozen scoring",
+  "systems": 4,
+  "limitations": [
+    "Post-hoc descriptive analysis of previously inspected external data; not a new blind evaluation.",
+    "No calibration or threshold selection on external labels.",
+    "Constant baselines are diagnostic comparisons, not tuned models.",
+    "Single-class system AUC/AP/balanced accuracy undefined; recorded as null.",
+    "ECE depends on ten equal-width bins; no population-level calibration guarantee."
+  ]
+}
