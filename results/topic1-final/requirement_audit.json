@@ -1,0 +1,31 @@
+{
+  "pass_all": true,
+  "historical_files_preserved": {
+    "V1": 853,
+    "V2": 1838,
+    "V3": 506,
+    "V4": 341
+  },
+  "official_tasks": [
+    "matbench_steels",
+    "matbench_jdft2d",
+    "matbench_expt_gap",
+    "matbench_expt_is_metal",
+    "matbench_glass"
+  ],
+  "outer_folds": 5,
+  "validated_outer_prediction_files": 115,
+  "replayed_bundles": 86,
+  "inner_candidate_fits": 3789,
+  "final_component_refits": 200,
+  "total_new_fits": 3989,
+  "external_primary_n": 5122,
+  "source_checksum_verified": true,
+  "conformal_selection_calibration_separated": true,
+  "common_pool_reconstructed": true,
+  "limitations": [
+    "Full reselection seed experiment covers steels and jdft2d, conditional refit covers five tasks.",
+    "External validation covers glass under changed processing conditions, not all five properties.",
+    "Published strong-model results are rescored archives, not matched-budget local retraining."
+  ]
+}

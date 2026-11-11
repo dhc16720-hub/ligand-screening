@@ -1,0 +1,16 @@
+task,fold,use_new,mean_gain,threshold,improved_inner_folds,new_members,new_operation
+matbench_steels,0,False,-2.7541105528016865,2.6183122087387947,1,ET+CatBoost,mean
+matbench_steels,1,False,1.394493599397573,3.188852797396404,2,ET,mean
+matbench_steels,2,False,-1.138407424340296,1.5742478048398116,2,ET,mean
+matbench_steels,3,False,-2.220473473874885,4.231732385598152,1,ET,mean
+matbench_steels,4,False,-1.0827893792432424,0.827205369964599,1,ET,mean
+matbench_jdft2d,0,False,-3.3879404585833846,2.3963678344779242,1,CatBoost,mean
+matbench_jdft2d,1,False,-1.928183080811986,2.5987366424860068,1,CatBoost+ET,mean
+matbench_jdft2d,2,False,-0.9448351424533191,0.6525198692619666,0,ET+CatBoost,mean
+matbench_jdft2d,3,False,-1.8526050919513157,1.106537715976361,0,CatBoost,mean
+matbench_jdft2d,4,False,-1.4889560960051977,0.7521385887737198,0,CatBoost+ET,mean
+matbench_glass,0,True,0.0006777642791713593,0.0003370052363063483,3,ET+RF+CatBoost,mean
+matbench_glass,1,False,0.00014721124115165315,0.0009162010691352291,2,ET+RF,mean
+matbench_glass,2,True,0.0009908362790725562,0.00047795897842088815,3,ET+RF+CatBoost,mean
+matbench_glass,3,False,-9.146327277705553e-05,0.0004369578590740621,1,ET+RF+CatBoost,mean
+matbench_glass,4,False,-0.0006916287708728097,0.0010028970384832248,1,ET+RF,mean

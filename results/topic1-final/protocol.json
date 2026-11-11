@@ -1,0 +1,60 @@
+{
+  "version": "Final validation, V4 frozen",
+  "tasks": [
+    "matbench_steels",
+    "matbench_jdft2d",
+    "matbench_expt_gap",
+    "matbench_expt_is_metal",
+    "matbench_glass"
+  ],
+  "conditional_refit_seeds": [
+    7,
+    2026
+  ],
+  "full_selection_seeds": [
+    7,
+    2026
+  ],
+  "full_selection_tasks": [
+    "matbench_steels",
+    "matbench_jdft2d"
+  ],
+  "inner_partition": "same three-fold splitting algorithm; fixed split seed, model seeds perturbed",
+  "conformal": {
+    "tasks": [
+      "matbench_steels",
+      "matbench_jdft2d",
+      "matbench_expt_gap"
+    ],
+    "nominal": 0.9,
+    "proper_fraction": 0.8,
+    "split_seed": 20261110,
+    "rule": "Composition-group-disjoint proper/calibration split inside each official outer train. Full selection uses proper set only; no reuse of old hyperparameters selected with calibration labels."
+  },
+  "common_pool": "RF, ET, CatBoost on old and D representations, identical candidate budgets and selection recipes; reuse original OOF and outer predictions",
+  "external": {
+    "dataset": "glass_ternary_hipt",
+    "url": "https://ndownloader.figshare.com/files/13298018",
+    "sha256": "4a4c60ef227891203570dbc3decb606649b877f6b75289afd4e78fe8e8095e63",
+    "training": "Full matbench_glass only; frozen V4 procedure; no external-label tuning",
+    "exclusion": "Remove exact fractional composition matches (8 decimals). Primary also removes min L1 distance <=0.02. Keep duplicate measurement rows; bootstrap by composition.",
+    "evaluation": "Primary separated composition subset; secondary all nonexact-overlap; per-system results. Threshold .5, no external calibration.",
+    "caveat": "Sputtering versus bulk/melt-based source conditions: external domain-shift stress test, not identical-condition replication. Does not validate all five tasks externally."
+  },
+  "caveat": "All five official datasets have been inspected in earlier versions. No claim of fresh blind validation for these five. SE gate is a heuristic.",
+  "sources": {
+    "topic1/final_validation.py": "e50d39d02dd9eb67727fae37e0bec448e7ab2013cc900b817b7ebb40108f9ea6",
+    "topic1/final_models.py": "5b8341f1e06cc54207a53d33404de9b44eaecbaaea33a6307b1c267b5c40248b",
+    "topic1/final_external.py": "9bc4f1503e5589546acf3665749f0926407997d3fd01ebb645d349affe47409a",
+    "topic1/advanced.py": "5f50ea02170f8dcfbf0b9937f6a3c435239923925da47949c973f8f190fad0ab",
+    "topic1/refine_models.py": "fcd58d7bdd3865bb3110fd543f4ed968bdafc79e58f576e3d7053a693693e35b",
+    "topic1/physics_models.py": "a667f95426a35f05acb1f55d6e6ca0fc2a43dff8df90fb1ef2224ced6fcc81a5",
+    "topic1/physics_features.py": "7c59724920ee1bf95091962af0edcf7cff00fac3477c7260d031cdd17882c145"
+  },
+  "historical_manifests": {
+    "outputs/topic1": "6074d7f08408ffd424ef7c6b4640076d30a7c7a098a1193310645c8b926af38b",
+    "outputs/topic1_v2": "b3ff44622af0473296032f6cf4a81673ed0c8d99e3b16c97a7a8519734f30574",
+    "outputs/topic1_v3": "5513a77e05b17fbaa4bdcb9c026560bc3e8801fe4c7a8fcfd7199cebda266782",
+    "outputs/topic1_v4": "514db0efa86a9e0eda8ea316513efb5697654a63ffbd4a0ef8c569716edf89b5"
+  }
+}

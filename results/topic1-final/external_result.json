@@ -1,0 +1,77 @@
+{
+  "primary": {
+    "n": 5122,
+    "positive_fraction": 0.30632565404139006,
+    "brier": 0.5247392457055654,
+    "roc_auc": 0.7460147772320342,
+    "balanced_accuracy": 0.5273008725021109,
+    "accuracy": 0.34420148379539245,
+    "f1": 0.48299215022317993
+  },
+  "nonexact_overlap_removed": {
+    "n": 5170,
+    "positive_fraction": 0.3034816247582205,
+    "brier": 0.5291291316196581,
+    "roc_auc": 0.7373908600206479,
+    "balanced_accuracy": 0.5269369619550125,
+    "accuracy": 0.34100580270793035,
+    "f1": 0.479449961802903
+  },
+  "all_rows_diagnostic": {
+    "n": 5170,
+    "positive_fraction": 0.3034816247582205,
+    "brier": 0.5291291316196581,
+    "roc_auc": 0.7373908600206479,
+    "balanced_accuracy": 0.5269369619550125,
+    "accuracy": 0.34100580270793035,
+    "f1": 0.479449961802903
+  },
+  "n_total": 5170,
+  "n_exact_overlap": 0,
+  "n_nonexact_near_overlap": 48,
+  "raw_sha256": "4a4c60ef227891203570dbc3decb606649b877f6b75289afd4e78fe8e8095e63",
+  "protocol_sha256": "5b78da5b1d69ae38a7abf25f983235ce6d5253ba5125b12f1243441473477411",
+  "model_sha256": "bd1798287c9311d315e3f757b17800fc694ef17a57dd6412267555c7330eb95d",
+  "per_system": {
+    "CoFeZr": {
+      "n": 1274,
+      "positive_fraction": 0.3987441130298273,
+      "brier": 0.563032189194037,
+      "roc_auc": 0.7440533706132686,
+      "balanced_accuracy": 0.5,
+      "accuracy": 0.3987441130298273,
+      "f1": 0.5701459034792368
+    },
+    "CoTiZr": {
+      "n": 1281,
+      "positive_fraction": 0.28805620608899296,
+      "brier": 0.5694968516151018,
+      "roc_auc": 0.693419269719013,
+      "balanced_accuracy": 0.5,
+      "accuracy": 0.28805620608899296,
+      "f1": 0.44727272727272727
+    },
+    "CoVZr": {
+      "n": 1261,
+      "positive_fraction": 0.548770816812054,
+      "brier": 0.4138895589902607,
+      "roc_auc": 0.4737928827574997,
+      "balanced_accuracy": 0.5,
+      "accuracy": 0.548770816812054,
+      "f1": 0.7086533538146441
+    },
+    "FeTiNb": {
+      "n": 1306,
+      "positive_fraction": 0.0,
+      "brier": 0.5505139407848691,
+      "roc_auc": null,
+      "balanced_accuracy": null
+    }
+  },
+  "interpretation": "Cross-source and processing-domain shift. No external labels enter fitting, tuning, thresholding or calibration.",
+  "conditional_cluster_bootstrap_auc_95pct": [
+    0.7321196831237223,
+    0.7592656864563139
+  ],
+  "bootstrap_note": "Composition-cluster bootstrap; conditional on four observed chemical systems and fitted model, not a population-level guarantee."
+}

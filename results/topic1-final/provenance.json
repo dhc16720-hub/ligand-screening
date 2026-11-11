@@ -1,0 +1,41 @@
+{
+  "published": "2026-11-11",
+  "files": {
+    "v4_summary.csv": {
+      "source": "outputs/topic1_v4/summary.csv",
+      "sha256": "423a5eec04a2a79e2f9592ad8f76f5bbaab46811f4a459def788cd286259f922"
+    },
+    "v4_fold_metrics.csv": {
+      "source": "outputs/topic1_v4/fold_metrics.csv",
+      "sha256": "42c09db8b510351c083b98c57d3b39a2b8713b46a9668d03f1be17447b970bdb"
+    },
+    "matched_representation_controls.csv": {
+      "source": "outputs/topic1_v4/matched_representation_controls.csv",
+      "sha256": "76402b6d5115e41a22b525e6de533f4b816f54406a7a0b855733f9cde5e9fd9a"
+    },
+    "gate_decisions.csv": {
+      "source": "outputs/topic1_v4/gate_decisions.csv",
+      "sha256": "a9ee8aa2c63ab40fa26176f87adf12fd1837af48ca07220f3801435c16fc2c69"
+    },
+    "validation_fold_metrics.csv": {
+      "source": "outputs/topic1_final/validation_fold_metrics.csv",
+      "sha256": "a89dfa68c2f6c135a42e4db4cbad19034e348fb73190d56197a625f2c4480703"
+    },
+    "validation_summary.csv": {
+      "source": "outputs/topic1_final/validation_summary.csv",
+      "sha256": "1bfc990fea3c1b41308b47b2617428b75688ff2f24111d9f2d8443bb49a009c4"
+    },
+    "requirement_audit.json": {
+      "source": "outputs/topic1_final/requirement_audit.json",
+      "sha256": "09e185ea38aa88bfbc62342645a9539702c1cb76d4c81200776c48c0259a36d7"
+    },
+    "protocol.json": {
+      "source": "outputs/topic1_final/protocol.json",
+      "sha256": "5b78da5b1d69ae38a7abf25f983235ce6d5253ba5125b12f1243441473477411"
+    },
+    "external_result.json": {
+      "source": "outputs/topic1_final/external/result.json",
+      "sha256": "b4f749f298ba0503dbd00eb738b1c2a6465c854e0372fe5575ace6550e123788"
+    }
+  }
+}
