@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "pass_all": true,
+  "started_at": "2026-11-11T12:59:07.843275+00:00",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "stages": {
+    "historical_and_final": {
+      "pass_all": true,
+      "final_model_replays": 86
+    },
+    "small_data": {
+      "pass_all": true,
+      "replayed_models": 1050,
+      "training_performed": false
+    },
+    "external_diagnostics": {
+      "pass_all": true,
+      "primary_rows": 5122,
+      "training_performed": false
+    }
+  },
+  "training_performed": false,
+  "source_manifest_sha256": "1109ac2cc11714204ea0f6b5cc6606e11c0a4d57defd61866f277cd871b55241",
+  "artifact_count": 6278,
+  "original_artifacts_unchanged": true,
+  "elapsed_seconds": 76.11819637499866,
+  "finished_at": "2026-11-11T13:00:23.961187+00:00",
+  "source_commit": "f7c580b597f6371da6b5370e39f27a5bfa02e292",
+  "release_tag": "topic1-v1.0.0",
+  "fresh_virtual_environment": true,
+  "fresh_matbench_checkout": true,
+  "reused_dependency_environment": false,
+  "pip_download_cache_reused": true,
+  "tests_passed": 54,
+  "input_artifacts": "Fresh public source clone plus results and model release ZIPs",
+  "new_training": false,
+  "log_sha256": {
+    "fresh_setup.log": "69e6ba2bfe4c41eb787d1937d2cd831d9cf53ba180eabcf20a96441eca681b60",
+    "fresh_check.log": "bdc70836252586742621d59f62f484ba0e38332cedb4e51c0234816fc3245d32",
+    "fresh_tests.log": "4d89f3959ee1eae05d83ad157f3ff553afd4004d49b6497a18943f51f1bb8da1"
+  }
+}
