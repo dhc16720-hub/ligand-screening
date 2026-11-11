@@ -4,11 +4,11 @@
 
 ## 下载与用途
 
-在本 Fork 的 [Releases](https://github.com/dhc16720-hub/ligand-screening/releases) 选择 `topic1-v1.0.0`：
+在本 Fork 的 [Releases](https://github.com/dhc16720-hub/ligand-screening/releases) 选择 `topic1-v1.0.1`：
 
 - GitHub 自动提供的 **Source code (zip)**：该标签对应的完整仓库源码，包括原平台与课程扩展。只需从零复现时，下载这一份即可。
-- **topic1-v1.0.0-results.zip**：逐样本预测、指标、特征、实验协议、审计和研究图表；含用于重放的原始实验记录。
-- **topic1-v1.0.0-models.zip**：1,396 个已训练模型。与结果包、同版本源码配套使用。
+- **topic1-v1.0.1-results.zip**：逐样本预测、指标、特征、实验协议、审计和研究图表；含用于重放的原始实验记录。
+- **topic1-v1.0.1-models.zip**：1,396 个已训练模型。与结果包、同版本源码配套使用。
 - **release.json / SHA256SUMS.txt**：每个附件的字节数、SHA-256、文件数和已验证平台。
 
 附件中的模型来自已完成的 macOS 实验。下载和验收已有模型不等于在本机重新训练；Linux 的新训练记录另行列明，不与 macOS 模型混合。不要加载不明来源或被修改的模型文件。
@@ -35,7 +35,7 @@ bash topic1/python.sh scripts/reproduce_topic1.py check-project
 ```bash
 bash topic1/python.sh scripts/reproduce_topic1.py check-project
 bash topic1/python.sh scripts/package_topic1_release.py build \
-  --version topic1-v1.0.0 --output outputs/releases/topic1-v1.0.0
+  --version topic1-v1.0.1 --output outputs/releases/topic1-v1.0.1
 ```
 
 打包器只收录最近成功总验收登记的文件；源码清单或产物变化则拒绝打包。打包时重新校验实际字节，打包后读取 ZIP 内全部文件复核，并生成外层 SHA-256。已有版本目录和附件不能覆盖；修订时使用新版本号。发布时应把 GitHub 标签固定到与包内源码清单相符的提交。

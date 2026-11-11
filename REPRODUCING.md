@@ -9,9 +9,10 @@
 | macOS 原实验 minimum → V2 → V3 → V4 → final | 从独立克隆完成 7,481 次拟合，见下方历史记录 |
 | macOS 增量研究 | 1,050 次拟合及全部模型重放；外部诊断不训练 |
 | macOS 统一 `check-project` | 实测通过：6,278 个原始文件、最终 86 个模型组合及小数据 1,050 个模型重放，原文件不变 |
-| 测试 | 当前 54 项：原科学测试 18 + 复现回归 14 + 小数据/外部诊断 8 + 项目验收/发布 14；历史 Linux 的 22 项仅代表当时版本 |
+| 测试 | 当前 58 项：原科学测试 18 + 复现回归 14 + 小数据/外部诊断 8 + 项目验收/发布 18；历史 Linux 的 22 项仅代表当时版本 |
+| 发布包独立解压核验 | v1.0.0：公开源码新克隆、两个发布 ZIP、全新依赖环境、54 项当时测试及总验收通过；[证据](results/topic1-improvements/release_rehearsal.json) |
 | Linux minimum | 历史两次通过；不代表优化实验已通过 |
-| Linux 全项目 | [运行 #3](https://github.com/dhc16720-hub/ligand-screening/actions/runs/43019918648)已启动，固定提交 `06d0936`；完成前不标记通过 |
+| Linux 全项目 | [运行 #3](https://github.com/dhc16720-hub/ligand-screening/actions/runs/43019918648)已启动，固定提交 `06d0936`，该提交包含 48 项测试；后续发布工具与状态修正测试不在此旧提交中。完成前不标记通过 |
 | Windows/WSL2 | 未实测 |
 
 原始实验版本保持冻结。当前复现入口增加了整体验收和发布工具；文档中的历史测试数量、旧平台记录不覆盖后来新增代码。
@@ -128,7 +129,7 @@ bash topic1/python.sh scripts/reproduce_topic1.py check-project
 
 `all` 和 `check-complete` 保持原有 V1–V4/final 范围；`project` 和 `check-project` 才包含新增小数据研究与外部诊断。总验收复核完整性、官方数据身份、保存模型预测、汇总表、外部诊断来源和报告；小数据与外部重算在临时目录进行。图表文件校验完整性，数值结论通过模型重放和表格重算核对；不声称进行图像像素相等验证。
 
-验收记录在 `outputs/project_verification/latest.json`。每次 `check-project` 开始先写 `running / pass_all: false`，成功后才写 `passed`；异常写 `failed`，强制终止留下 `running`，不会沿用之前的通过状态。记录包含阶段范围、源码清单哈希、环境、耗时及逐文件哈希。它仅代表记录中的源码与产物；发布前再次检查，变动后需重新验收。
+验收记录在 `outputs/project_verification/latest.json`。`project` / `check-project` 在预检查和训练之前先写 `running / pass_all: false`，成功后才写 `passed`；异常写 `failed`，强制终止留下 `running`，不会沿用之前的通过状态。记录包含阶段范围、源码清单哈希、环境、耗时及逐文件哈希。它仅代表记录中的源码与产物；发布前再次检查，变动后需重新验收。
 
 ### 资源与中断恢复
 
