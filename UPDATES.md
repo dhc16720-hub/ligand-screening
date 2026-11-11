@@ -1,5 +1,15 @@
 # 更新记录
 
+## 2026-11-11 · 公开下载版复现检查与修复
+
+首次上传文件齐全不等于从零流程可运行。本次发现并补齐：Matbench 独立源码检出、V1/V2 交付清单生成、外部数据下载及校验、缺失/空清单拒绝通过，以及公开基线/学习曲线和文字分析证据。
+
+新增 [统一复现入口](REPRODUCING.md)、`scripts/reproduce_topic1.py` 和 4 项回归测试；补充 [研究摘要](RESEARCH_SUMMARY.md) 与公开来源清单。冻结科学模块及原实验产物不修改。
+
+独立克隆 + 全新虚拟环境实测通过：锁定依赖安装、官方划分检查、18 + 4 项测试、五任务官方五折和完整最低要求报告（320 主/结构对照 + 40 学习曲线 + 2 诊断拟合）。320 行逐折指标与原结果在 1e-10 容差内一致。详细边界和机器记录见 [reproduction_check.json](results/topic1-final/reproduction_check.json)。本次未重训全部 V2–V4/最终验证，未测试其他操作系统。
+
+以下首轮发布记录保留作历史参考；新下载者统一按 REPRODUCING.md 运行。
+
 ## 2026-11-11 · Topic 1 课程研究扩展
 
 本 Fork 基于 [nighty35628/ligand-screening](https://github.com/nighty35628/ligand-screening) 的 Amadeus 项目，新增独立的 `topic1/` 实验模块及测试。上游界面、原有案例和作者归属保留。课程实验使用 Matbench 官方五折，与原 Amadeus 案例的评估协议分别报告。

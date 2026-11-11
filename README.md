@@ -19,7 +19,9 @@
 
 新增五个 Matbench 官方任务的可复现实验、基线与表示消融、补充验证和审计代码。
 
-- [更新说明与复现入口](UPDATES.md)
+- [从公开下载版复现：安装、最低要求、完整流程](REPRODUCING.md)
+- [研究结果与要求对应分析](RESEARCH_SUMMARY.md)
+- [更新说明](UPDATES.md)
 - [公开结果摘要](results/topic1-final/README.md)
 - [最终验证说明](topic1/FINAL_README.md)
 
@@ -128,7 +130,7 @@ SciencePal 参与了问题拆解、公开数据核查、验证协议设计和独
 需要 uv 或 Python 3.12。首次启动会安装固定版本依赖。
 
 ```bash
-git clone https://github.com/nighty35628/ligand-screening.git
+git clone https://github.com/dhc16720-hub/ligand-screening.git
 cd ligand-screening
 cp .env.example .env.local
 # 在 .env.local 填写 DeepSeek API Key
