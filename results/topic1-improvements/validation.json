@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-11",
+  "platform": "macOS Apple Silicon",
+  "tests_passed": 40,
+  "small_data_fits": 1050,
+  "small_data_model_replays": 1050,
+  "small_data_public_check_passed": true,
+  "historical_complete_check_passed": true,
+  "original_frozen_scientific_files_changed": false,
+  "external_diagnostic_new_fits": 0,
+  "plots_visually_checked": [
+    "learning_RF.png",
+    "learning_ET.png",
+    "reliability.png",
+    "confusion_matrices.png"
+  ],
+  "documentation_local_links_checked": true,
+  "logs_sha256": {
+    "training.log": "079e146884cf8c2c3f2a82ef46f596a7021bc3b391b01b1d801bc5f8131c4f77",
+    "public_small_data_check.log": "ecca67c113b85107646f1213654ad021f19baf3cd311d82a2901b5eebc7fea24",
+    "audit.log": "a15c2ed9e96c79a31df9b300cc8c80249f63f008a4605ad3c15a8e964df912f7",
+    "external_diagnostics.log": "cb46a5f5d7b71d8559b5f7c23572e6e9f54fc02beed41932c6b5788ed8ac65e3",
+    "tests.log": "1516f0f9c9aedfed3ee2f8bdcc77c8190bd94836e055c14740bf296a43f441b8",
+    "historical_complete_check.log": "caa4697b9e1bd9c1b2b257f1e572bb88b98aee515a0324aa1256d924cfe1c991"
+  },
+  "limitations": [
+    "New studies not yet tested on Linux or Windows.",
+    "Results are exploratory on previously inspected datasets.",
+    "Full model archive is local; public repository carries summaries and reproducible source."
+  ]
+}
