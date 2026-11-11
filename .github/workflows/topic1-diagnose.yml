@@ -1,0 +1,76 @@
+name: Topic 1 targeted Linux diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Install identical locked environment
+        run: python3.12 scripts/reproduce_topic1.py setup
+      - name: Prepare official gap inputs only
+        run: bash topic1/python.sh -m topic1.run prepare --tasks matbench_expt_gap
+      - name: Prepare bounded diagnostic
+        run: |
+          cat > diagnose_small_data.py <<'PY'
+          import concurrent.futures, faulthandler, json, multiprocessing, sys, time
+          from pathlib import Path
+          from experiments import small_data
+
+          def initialise(mode):
+              faulthandler.enable()
+              faulthandler.dump_traceback_later(60, repeat=True)
+              small_data.OUT = small_data.ROOT/'outputs'/('diagnostic-'+mode)
+
+          def fit(config):
+              print('BEGIN', config, flush=True)
+              start=time.monotonic()
+              result=small_data.fit_one(config)
+              print('DONE', round(time.monotonic()-start,3), config, flush=True)
+              return result
+
+          if __name__ == '__main__':
+              mode=sys.argv[1]
+              jobs=[c for c in small_data.configurations() if c['task']=='matbench_expt_gap' and c['fold']==0 and c['fraction']==.5 and c['representation'] in ['B','C']]
+              print('DIAGNOSTIC', mode, 'jobs', len(jobs), flush=True)
+              start=time.monotonic()
+              with concurrent.futures.ProcessPoolExecutor(max_workers=4, mp_context=multiprocessing.get_context(mode), initializer=initialise, initargs=(mode,)) as pool:
+                  list(pool.map(fit,jobs))
+              print('DIAGNOSTIC PASSED', mode, time.monotonic()-start, flush=True)
+          PY
+      - name: Fork workers with stack traces
+        timeout-minutes: 4
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          bash topic1/python.sh diagnose_small_data.py fork 2>&1 | tee diagnostic-fork.log
+      - name: Spawn workers with same data and settings
+        if: always()
+        timeout-minutes: 4
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          bash topic1/python.sh diagnose_small_data.py spawn 2>&1 | tee diagnostic-spawn.log
+      - name: Save diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: topic1-targeted-diagnostic-${{ github.run_id }}
+          retention-days: 30
+          path: |
+            diagnostic-*.log
+            outputs/diagnostic-*/**/result.json
+            outputs/diagnostic-*/**/predictions.csv
+            outputs/topic1/matbench_expt_gap/official_folds.json
+            outputs/topic1/matbench_expt_gap/samples.csv
