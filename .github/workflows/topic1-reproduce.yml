@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       scope:
-        description: 'Minimum teacher requirements or full optimized experiment'
+        description: 'minimum, historical all, or entire project including new studies'
         type: choice
         options:
           - minimum
           - all
+          - project
         default: minimum
         required: true
 
@@ -53,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: topic1-linux-${{ inputs.scope }}-${{ github.run_id }}
-          retention-days: 7
+          retention-days: 90
           if-no-files-found: warn
           path: |
             reproduction-linux.log
@@ -80,4 +81,9 @@ jobs:
             outputs/**/validation_summary.csv
             outputs/**/fold_metrics.csv
             outputs/**/REPORT.md
+            outputs/project_verification/**
+            outputs/topic1_small_data/**
+            outputs/topic1_external_diagnostics/**
+            outputs/topic1_final/datasets/**
+            outputs/topic1_final/external/features.json
 
