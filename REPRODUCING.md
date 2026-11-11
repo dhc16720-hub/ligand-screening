@@ -9,10 +9,11 @@
 | macOS 原实验 minimum → V2 → V3 → V4 → final | 从独立克隆完成 7,481 次拟合，见下方历史记录 |
 | macOS 增量研究 | 1,050 次拟合及全部模型重放；外部诊断不训练 |
 | macOS 统一 `check-project` | 实测通过：6,278 个原始文件、最终 86 个模型组合及小数据 1,050 个模型重放，原文件不变 |
-| 测试 | 当前 58 项：原科学测试 18 + 复现回归 14 + 小数据/外部诊断 8 + 项目验收/发布 18；历史 Linux 的 22 项仅代表当时版本 |
+| 测试 | 当前 macOS 61 项：原科学测试 18 + 复现回归 14 + 小数据/外部诊断 8 + 项目验收/发布 18 + 证据完整性 3；Linux 原训练提交为 48 项 |
 | 发布包独立解压核验 | v1.0.0：新克隆、新依赖环境、54 项测试及总验收通过；[证据](results/topic1-improvements/release_rehearsal.json)。该独立副本更新至 v1.0.1 并解压对应两个 ZIP 后，58 项测试、总验收、故障注入与恢复通过；[v1.0.1 证据](results/topic1-improvements/release_v101_rehearsal.json) |
-| Linux minimum | 历史两次通过；不代表优化实验已通过 |
-| Linux 全项目 | [运行 #3](https://github.com/dhc16720-hub/ligand-screening/actions/runs/43019918648)已启动，固定提交 `06d0936`，该提交包含 48 项测试；后续发布工具与状态修正测试不在此旧提交中。完成前不标记通过 |
+| Linux minimum | 历史两次通过；本次也完成，见下方全训练证据 |
+| Linux 全训练及分阶段验收 | `06d0936` 完成 8,531 次拟合及各阶段审计；原运行误取消后，`ea56c8c` 补验收成功重放 86 + 1,050 个模型并完成外部诊断。[证据与 528 项跨平台比较](results/topic1-improvements/LINUX_VALIDATION.md) |
+| Linux 统一 `check-project` | **未完整执行**；原选择性附件缺少 1,510 个历史清单条目，不能冒充完整重放包。当前工作流已改为保存完整 outputs，但新配置尚未跑完整训练流程 |
 | Windows/WSL2 | 未实测 |
 
 原始实验版本保持冻结。当前复现入口增加了整体验收和发布工具；文档中的历史测试数量、旧平台记录不覆盖后来新增代码。
@@ -32,7 +33,7 @@
 
 macOS Apple Silicon / Python 3.12.14 完成上述全链路。最终 116 份预测文件（含外部验证）与原实验在 rtol/atol=1e-10 内一致，191 项参数/组合决策无变化。V1、V3 逐折指标在该容差内一致；V2、V4、final 的少量 ROC-AUC 因近似并列预测的排序变化而不逐数相同，最大差约 1.32e-5。原始预测与分数未被舍入或修改来强行制造一致。详见 [全链路审计](results/topic1-final/reproduction_full_audit.json) 和 [实测逐折指标](results/topic1-final/reproduction_fold_metrics.csv)。
 
-Ubuntu 24.04.5 x86_64 / Python 3.12.16 也已两次通过从零安装、22 项测试、完整 minimum 和科学审计。[最新成功运行记录](https://github.com/dhc16720-hub/ligand-screening/actions/runs/42982176504)及 [Linux 审计与跨平台比较](results/topic1-final/reproduction_linux_audit.json)可核验。**Linux 本次验证范围为 minimum；没有在 Linux 重训 V2–V4/final。Windows/WSL2 尚未实测。**
+Ubuntu 24.04.5 x86_64 / Python 3.12.16 也已两次通过从零安装、22 项测试、完整 minimum 和科学审计。[最新成功运行记录](https://github.com/dhc16720-hub/ligand-screening/actions/runs/42982176504)及 [Linux 审计与跨平台比较](results/topic1-final/reproduction_linux_audit.json)可核验。以上是早期 minimum 记录。后续已补齐 Linux V2–V4/final 和小数据训练；最新验收范围及限制见文首与 [Linux 实测说明](results/topic1-improvements/LINUX_VALIDATION.md)。Windows/WSL2 尚未实测。
 
 跨系统不保证数值逐项相同。主要表示下，Linux 与 macOS 的钢材 RF 五折平均 MAE 差约 0.132 MPa，二维材料 RF 差约 0.282 meV/atom，分类基线平均 AUC 差不超过 0.00020；完整逐折差异另存于审计。两平台源代码、协议、样本 ID 和官方划分一致，均独立通过科学审计；部分特征数组哈希不同。底层数值库、浮点计算、求解器和树分裂敏感性各自的贡献尚未完全拆分，不能将流程成功写成跨平台逐数一致。
 
@@ -42,7 +43,7 @@ Ubuntu 24.04.5 x86_64 / Python 3.12.16 也已两次通过从零安装、22 项�
 
 ## 环境与安装
 
-已验证 Apple Silicon macOS 的完整流程，以及 Ubuntu 24.04 x86_64 的 minimum。需要 Python 3.12、Git、Bash、网络、足够磁盘空间以及可持续运行的 CPU。Windows 可尝试 WSL2 的 Linux 路径，但当前不能标记为已验证。依赖锁包含原生科学库，不保证其他 Python 版本、CPU 架构或旧系统可用。
+已验证 Apple Silicon macOS 的完整流程；Ubuntu 24.04 x86_64 已完成所有训练阶段和保存模型补验收，统一 `check-project` 的限制见文首。需要 Python 3.12、Git、Bash、网络、足够磁盘空间以及可持续运行的 CPU。Windows 可尝试 WSL2 的 Linux 路径，但当前不能标记为已验证。依赖锁包含原生科学库，不保证其他 Python 版本、CPU 架构或旧系统可用。
 
 先安装 Python 3.12（确认 `python3.12 --version`）；若解释器不在 PATH，用实际的 Python 3.12 可执行文件绝对路径替换第一条 Python 命令。下载 ZIP 的用户解压后进入含 `README.md` 的仓库根目录，跳过 git clone。
 
@@ -147,7 +148,7 @@ bash topic1/python.sh scripts/reproduce_topic1.py check-project
 
 在自己的 Fork 打开 Actions → **Topic 1 Linux reproduction** → Run workflow，选择 `minimum`、`all` 或 `project`。工作流使用 Ubuntu 24.04、Python 3.12、锁定科学依赖和固定提交的官方 Actions；仓库权限为只读，不需要 API 密钥。先安装和测试，再运行完整指定阶段，最后上传审计、报告、运行日志和数值诊断附件。`all` 是历史实验入口；`project` 还运行新增研究和总验收。提供入口或启动任务不代表验收通过。
 
-新工作流的 Actions 附件保留 90 天；历史运行按当时的 7 天设置保留。附件不是永久归档，重要结果应及时下载。Actions 附件仅包含工作流列出的证据文件，并非完整的离线重放包；重放已有模型请使用同一 Release 的源码、结果包与模型包；仓库中的复现审计 JSON 和逐折指标是长期保留的摘要。运行失败不能以某个前置步骤成功替代最终科学审计。
+新工作流的 Actions 附件保留 90 天；历史运行按当时的 7 天设置保留。附件不是永久归档，重要结果应及时下载。历史运行 #3 的附件为选择性证据，缺少 1,510 个原清单条目，不是完整离线重放包。当前工作流已改为保存全部 outputs，并预留超时后的收尾时间；新配置尚未完成整条运行实测。重放已发布的 macOS 模型请使用同一 Release 的源码、结果包与模型包；仓库中的复现审计 JSON 和逐折指标是长期保留的摘要。运行失败不能以某个前置步骤成功替代最终科学审计。
 
 ## 不同检查能证明什么
 
