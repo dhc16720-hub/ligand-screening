@@ -1,0 +1,67 @@
+{
+  "tasks": [
+    "matbench_steels",
+    "matbench_jdft2d",
+    "matbench_expt_gap",
+    "matbench_expt_is_metal",
+    "matbench_glass"
+  ],
+  "official_folds": 5,
+  "fractions": [
+    0.2,
+    0.5,
+    1.0
+  ],
+  "subset_seeds": [
+    7,
+    42,
+    2026
+  ],
+  "representations": [
+    "A",
+    "B",
+    "C"
+  ],
+  "models": [
+    "RF",
+    "ET"
+  ],
+  "model_seed": 42,
+  "trees": 100,
+  "model_threads": 1,
+  "expected_fits": 1050,
+  "sampling": "Uniform nested subsets within each official training fold, no target-based sampling. Same IDs across representations and models. Full-data point fitted once.",
+  "tuning": "None. Fixed RF/ET settings; preprocessing fitted separately on each training subset.",
+  "aggregation": "Average subset repetitions within each fold first; then mean and SD over five official folds. Repetitions and overlapping folds are not independent samples.",
+  "interpretation": "Exploratory follow-up on previously inspected benchmarks. Composition A/B/C only; no structural features. Does not replace official full-data results.",
+  "hashes": {
+    "experiments/small_data.py": "25d68309558959491968cfe4be25809182b0f2a8f07e084dd607c972c79ca979",
+    "topic1/run.py": "1c483760fa69fcc47ce04b090cdf229f8e6c16506f74da89365e5d52b3199cc9",
+    "topic1/requirements-v4.lock.txt": "a8d1d78897cfe71ca3a7cd66cab7d9fee8610dea06c9c58e9359f0a623289491",
+    "outputs/topic1/matbench_steels/official_folds.json": "57d50eec731748a889c6a72300ec5c0355a5a8c876763fc4757cc8e22f4a0266",
+    "outputs/topic1/matbench_steels/samples.csv": "f22dffd4770a38972d288619487ca77f862f90ccdcc92f297197d667fd0ce613",
+    "outputs/topic1/matbench_steels/features_A.npy": "e876bb2e5284f5d57e40666703086952d04cc2738bac4b4717a58323318eee7c",
+    "outputs/topic1/matbench_steels/features_B.npy": "9d412976168c5286a52514b5758217e52a6327cc8c185ec7726d8bbfb24768be",
+    "outputs/topic1/matbench_steels/features_C.npy": "35bf4ad7ef80406c3e4a7748af8fb45c5bcb27076729deb84c4bfbb75cc1815a",
+    "outputs/topic1/matbench_jdft2d/official_folds.json": "b5f9e4cc4881e3b9547da56b944612e9ef293d4bd21e942639d40990af4fc147",
+    "outputs/topic1/matbench_jdft2d/samples.csv": "22abd93dc216fe6bc4fc1fa3f584e21511b40a5e2eef2eadf1876feb7cabb3b6",
+    "outputs/topic1/matbench_jdft2d/features_A.npy": "c87c920b819c595514208b927ba0761325e7590b27da0ecb19992c6a5d685891",
+    "outputs/topic1/matbench_jdft2d/features_B.npy": "fd1d0b1b6de29008fcc1435ea5af5f6dc21b4899a6b1cc6c2882d37349112fb0",
+    "outputs/topic1/matbench_jdft2d/features_C.npy": "ed8b199c86eca3dae017416179d3a8e68fde6230e590db8ded62d297b9d0ab21",
+    "outputs/topic1/matbench_expt_gap/official_folds.json": "e0177972aef01088e5025678342c9647b0c73607a607bd2b830eb83df663311a",
+    "outputs/topic1/matbench_expt_gap/samples.csv": "8d16919293d2456811813d603038bd4e53687a21568241a2c9069109f679f71f",
+    "outputs/topic1/matbench_expt_gap/features_A.npy": "51ee1cb78ec9f233ed1e4ce2b10d3714513d6d36f3938c67ec6e52020ad5b3b7",
+    "outputs/topic1/matbench_expt_gap/features_B.npy": "4abf659abc56ec5e8b6cdb0e3d46e99a2290cbcf8f5e0d2f702952de95aa8685",
+    "outputs/topic1/matbench_expt_gap/features_C.npy": "14bccc18d46138f3e698f10e6dd2499f37197f0f27a861cc2ac289a453db10c3",
+    "outputs/topic1/matbench_expt_is_metal/official_folds.json": "4ccb020b1b04ffc3fc83fa9e2cfa0b69b88284017148972a0bf5c7c6d7f694c0",
+    "outputs/topic1/matbench_expt_is_metal/samples.csv": "e9ba1b623b2f0b2f3428b51040379d5fc99cf9782494857c4c7da56eda6213bc",
+    "outputs/topic1/matbench_expt_is_metal/features_A.npy": "4bc6defce91c28819d664d763178c7af5440ec3e06be2e4748674afa3685c24c",
+    "outputs/topic1/matbench_expt_is_metal/features_B.npy": "eaa5035959c38202ffacaec0825a47c9d8cfd217db9a881a6417cd8b11f0c43c",
+    "outputs/topic1/matbench_expt_is_metal/features_C.npy": "4306fe5a673d316ceaf71066194b71d795babe22552498541fe5190547a9b40f",
+    "outputs/topic1/matbench_glass/official_folds.json": "e81b82dbc8c6c7b2560e2f42c142e3dbd9e82002252482cd3374ffe79386f740",
+    "outputs/topic1/matbench_glass/samples.csv": "e5fa3e9a627928b05999c09e7cf67c98782146ded6a09f456c6da77e406161b7",
+    "outputs/topic1/matbench_glass/features_A.npy": "aa01cd981860a599c421487c42f4a1e7118a6902b7e93dfb3a6172d08e6ce122",
+    "outputs/topic1/matbench_glass/features_B.npy": "125094a833d79a318654619bfd187914cabf963699227b1671ac2b3196130a30",
+    "outputs/topic1/matbench_glass/features_C.npy": "5b4591002b7ac2217411e39fbd050f84cd600a8a5c95556c03894bdd8b552379"
+  }
+}

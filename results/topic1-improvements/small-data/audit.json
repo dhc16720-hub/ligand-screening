@@ -1,0 +1,17 @@
+{
+  "pass_all": true,
+  "tasks": [
+    "matbench_steels",
+    "matbench_jdft2d",
+    "matbench_expt_gap",
+    "matbench_expt_is_metal",
+    "matbench_glass"
+  ],
+  "official_folds": 5,
+  "fitted_models": 1050,
+  "replayed_models": 1050,
+  "full_data_repeated": false,
+  "paired_subset_identity_verified": true,
+  "train_only_preprocessing_verified": true,
+  "aggregation": "Subset means within each fold, then descriptive mean/SD over five folds; no independence-based significance claim."
+}

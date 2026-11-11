@@ -1,0 +1,12 @@
+{
+  "reason": "Audit-only CSV reader changed to float_precision=round_trip; exact target equality retained.",
+  "old_source_sha256": "d6f2ef379c6ba5df423eade7eeff32200765f7ec8934e638853175a2f4958682",
+  "new_source_sha256": "25d68309558959491968cfe4be25809182b0f2a8f07e084dd607c972c79ca979",
+  "training_function_AST_unchanged": true,
+  "configuration_and_hyperparameters_unchanged": true,
+  "existing_model_and_prediction_hash_pairs_verified": 1050,
+  "predictions_modified": false,
+  "models_modified": false,
+  "old_protocol_sha256": "c327c1f13e437bd347694597c7a2e2de5819cd191b16b187fe69d77924ffcc7e",
+  "new_protocol_sha256": "6b89247128628b344a36baa1578dee22ce661b61d5fb622c8c571c1b6bb480a1"
+}
