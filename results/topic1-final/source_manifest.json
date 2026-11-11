@@ -1,10 +1,10 @@
 {
   ".github/workflows/topic1-reproduce.yml": "2f3af59ac2dd022cc86910a0d1cf17d96bdaf50728173383095f0dc520846f9e",
   ".gitignore": "c4640501fceacc8f36edf035937b8a8a4f19ca077d7f2023de6b3f26f400a2ca",
-  "README.md": "0ae36e5e4a12ae8c5c5c96315e005b64e571fc32b95a097a3915b4c33e0b26a8",
-  "REPRODUCING.md": "77fbd385d04d2d96c42b873224a53efd8d3351a19a78b7e722d44f133613984e",
+  "README.md": "b93f5f5a9798c173175ca217ac1a95b2c646710f783d7b25699436561f2af940",
+  "REPRODUCING.md": "b996e38bab61d356b9fa22ec5889588033f2ac29625126ff3fb90052401e730a",
   "RESEARCH_SUMMARY.md": "81221a0bea133201a59f3970f93a4f1f7335e3c71589199d248241e2f112f349",
-  "UPDATES.md": "3fed7fd7ddff6e58c24165452b7b12f1dc94882423655b568eece8091b33607f",
+  "UPDATES.md": "511ad91d9f0c282a1fe802b726cfaa26e05f51c761f88d0425e4fcf50d2a4f70",
   "results/topic1-final/README.md": "b9f9fcdbd394bdb68a15002c8d86fdcb675c63e1558b8a3849d374c192c90ed2",
   "results/topic1-final/baseline_v1_summary.csv": "bf1462ef9d9a018c8bbd1207acde43ce2c27d5bdcae34768f543a637fd3becad",
   "results/topic1-final/baseline_v2_summary.csv": "b8fc2f3c03eb7a3ef11020bafdeb78220d9a6eff65e6da58f90564e155c4264d",
@@ -105,5 +105,7 @@
   "results/topic1-improvements/external/reliability.pdf": "0aafe5e87c1e2ff87759bef1ab7c9317e7afc6f99c322f5c2071c7ef418c89a3",
   "results/topic1-improvements/validation.json": "4dbf38434e284bb9cd033e0820eed7f3e2fdb34d8d46e498d53373221cf423b1",
   "scripts/verify_topic1_project.py": "2e7ed01d9b0aa3b08b4a33c2cb37374afefee982db92a15b8941abf57e0370c6",
-  "tests/test_project_delivery.py": "7d908d05ac1c95a220922c390b0d957999c5c9be7432540fa78af096f5c1efbd"
+  "tests/test_project_delivery.py": "6d53aad6741c25779e8f8dd52d215c53992ca352d5c5dfcc1c12bde47da9ad6e",
+  "scripts/package_topic1_release.py": "fc3ed424cd46207715980be79e2dba52da823a83355a527cb34fcdbe57718660",
+  "RELEASE.md": "6b94e710ffed9f4e13e19a2e54bde9c55791bffe0c7a700f7307656e542cd41e"
 }
