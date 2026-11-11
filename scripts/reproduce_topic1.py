@@ -212,6 +212,38 @@ def stage(name):
         print('FINAL SCIENTIFIC AUDIT COMPLETE. DOCX/native slides are optional separate presentation builds.')
 
 
+
+def project_command(name):
+    """Invalidate old success before preflight or any training stage can fail."""
+    import datetime
+    import time
+    from verify_topic1_project import atomic_json, REPORT
+    target = ROOT/REPORT
+    started = time.monotonic()
+    record = dict(status='running', pass_all=False, command=name,
+                  started_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
+    atomic_json(target, record)
+    try:
+        preflight()
+        if name == 'check-project':
+            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_project.py'])
+        else:
+            for child in ['all', 'small-data', 'external-diagnostics', 'check-project']:
+                run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/reproduce_topic1.py', child])
+        # A zero exit code without the complete science record is insufficient.
+        result = json.loads(target.read_text())
+        if result.get('status') != 'passed' or result.get('pass_all') is not True or \
+                set(result.get('stages', {})) != {'historical_and_final', 'small_data', 'external_diagnostics'} or \
+                not all(v.get('pass_all') is True for v in result['stages'].values()):
+            raise RuntimeError('Project command did not produce a complete successful audit')
+    except BaseException as error:
+        record.update(status='failed', pass_all=False, elapsed_seconds=time.monotonic()-started,
+                      finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                      error={'type':type(error).__name__, 'message':str(error)})
+        atomic_json(target, record)
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('stage', choices=['setup','check-public','preflight','test','minimum','v2','v3','v4','final','all','check-outputs','check-complete','seal-final','download-external','small-data','check-small-data','external-diagnostics','project','check-project'])
@@ -220,16 +252,10 @@ def main():
     elif args.stage == 'check-public': check_public()
     elif args.stage == 'check-outputs': check_outputs(VERSIONS)
     elif args.stage == 'download-external': download_external()
+    elif args.stage in ['project', 'check-project']: project_command(args.stage)
     else:
         preflight()
         if args.stage == 'preflight': return
-        if args.stage == 'check-project':
-            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_project.py'])
-            return
-        if args.stage == 'project':
-            for name in ['all', 'small-data', 'external-diagnostics', 'check-project']:
-                run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/reproduce_topic1.py', name])
-            return
         if args.stage in ['check-complete', 'seal-final']:
             extra = ['--seal'] if args.stage == 'seal-final' else []
             run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py', *extra])
