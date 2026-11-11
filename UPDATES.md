@@ -1,5 +1,13 @@
 # 更新记录
 
+## 2026-11-11 · 补齐完整重训与独立 Linux 验证
+
+在此前独立克隆与新环境的 minimum 结果上，继续完整重训 V2、V3、V4 和最终补充实验。五阶段共 **7,481 次拟合**，全部独立科学审计通过。最终检查 115 份外层预测、重放 86 个模型组合，外部主评估含 5,122 条样本；与原实验比较的 116 份预测均在 1e-10 容差内一致，191 项参数/组合决策无变化。
+
+新增 Ubuntu GitHub Actions 实测：从零安装锁定依赖、22 项测试、完整五任务官方五折 minimum 和报告审计通过。工作流更新为官方 Node 24 组件并保留数值诊断附件。Linux 的完整优化流程与 Windows/WSL2 仍未实测，不作已验证声明。
+
+公开 [全链路审计](results/topic1-final/reproduction_full_audit.json)、[Linux 审计](results/topic1-final/reproduction_linux_audit.json)和 [本次逐折指标](results/topic1-final/reproduction_fold_metrics.csv)。同平台少量 AUC 并列排序差异、跨平台数值差异均如实保留；科学源码及原实验结果未改动。当前安装与验证范围以 [REPRODUCING.md](REPRODUCING.md) 为准，以下旧条目记录当时的验证范围。
+
 ## 2026-11-11 · 公开下载版复现检查与修复
 
 首次上传文件齐全不等于从零流程可运行。本次发现并补齐：Matbench 独立源码检出、V1/V2 交付清单生成、外部数据下载及校验、缺失/空清单拒绝通过，以及公开基线/学习曲线和文字分析证据。

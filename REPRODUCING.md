@@ -4,15 +4,30 @@
 
 ## 本次实际验证范围（2026-11-11）
 
-独立克隆公开 Fork，创建全新虚拟环境，按锁定版本安装并通过 `pip check`。五个数据集从公开源重新下载，未复制原模型/数据输出；pip 可复用下载缓存。18 项原测试和 4 项新增回归测试通过。
+在独立克隆和全新虚拟环境中，使用本次公开复现入口，已完整跑通 **minimum → V2 → V3 → V4 → final**。五个基准数据集从公开源重新下载，没有复制原实验模型或特征缓存；pip 可复用下载缓存。科学源码未改动，18 项原测试和 4 项回归测试通过。
 
-`minimum` 从准备数据到报告、审计、清单完整跑通：320 + 40 + 2 次拟合；320 行逐折指标与原实验在 rtol/atol=1e-10 内一致，最大 MAE 差约 7.1e-14；分类指标完全一致。缺失清单拒绝通过，重复运行已完成 minimum 仅核验，不覆盖清单。外部数据下载及 SHA-256 校验也已实测。
+| 阶段 | 本次实际拟合次数 | 独立审计 |
+|---|---:|---|
+| minimum | 362（320 主/结构对照 + 40 学习曲线 + 2 诊断） | 五任务、官方五折、三个正式基线与报告通过 |
+| V2 | 1,780 | 260 组逐折预测、内层搜索和参考复评分通过 |
+| V3 | 900 | 120 组预测、90 个保存模型重放通过 |
+| V4 | 450 | 85 组预测、45 个模型重放、匹配预算与切换重建通过 |
+| final | 3,989 | 115 份外层预测、86 个模型组合重放、外部验证通过 |
+| 合计 | **7,481** | 全部阶段通过 |
 
-V2–V4 和最终补充验证是此前已完成的实验；本次修复了这些阶段的依赖入口，但**没有在此干净副本中再训练完全部优化实验**，不能声称其全部完成新机器端到端复现。证据见 [reproduction_check.json](results/topic1-final/reproduction_check.json) 和 [本次最低要求审计](results/topic1-final/reproduction_minimum_audit.json)。
+macOS Apple Silicon / Python 3.12.14 完成上述全链路。最终 116 份预测文件（含外部验证）与原实验在 rtol/atol=1e-10 内一致，191 项参数/组合决策无变化。V1、V3 逐折指标在该容差内一致；V2、V4、final 的少量 ROC-AUC 因近似并列预测的排序变化而不逐数相同，最大差约 1.32e-5。原始预测与分数未被舍入或修改来强行制造一致。详见 [全链路审计](results/topic1-final/reproduction_full_audit.json) 和 [实测逐折指标](results/topic1-final/reproduction_fold_metrics.csv)。
+
+Ubuntu 24.04.5 x86_64 / Python 3.12.16 也已两次通过从零安装、22 项测试、完整 minimum 和科学审计。[最新成功运行记录](https://github.com/dhc16720-hub/ligand-screening/actions/runs/42982176504)及 [Linux 审计与跨平台比较](results/topic1-final/reproduction_linux_audit.json)可核验。**Linux 本次验证范围为 minimum；没有在 Linux 重训 V2–V4/final。Windows/WSL2 尚未实测。**
+
+跨系统不保证数值逐项相同。主要表示下，Linux 与 macOS 的钢材 RF 五折平均 MAE 差约 0.132 MPa，二维材料 RF 差约 0.282 meV/atom，分类基线平均 AUC 差不超过 0.00020；完整逐折差异另存于审计。两平台源代码、协议、样本 ID 和官方划分一致，均独立通过科学审计；部分特征数组哈希不同。底层数值库、浮点计算、求解器和树分裂敏感性各自的贡献尚未完全拆分，不能将流程成功写成跨平台逐数一致。
+
+进一步诊断确认，3 个差异特征数组的最大元素差为 2.84e-14；macOS 使用 Accelerate，Ubuntu 使用 OpenBLAS。跨平台的个别预测差异可能明显大于平均指标差异，例如本次钢材单样本最大差约 70.43 MPa、分类概率最大差 0.15。两次 Ubuntu 运行的树模型指标基本一致，部分 Linear 分类基线仍出现最大逐折 AUC 差约 0.00203。不同因素的贡献尚未完全隔离；固定依赖和随机种子不等于所有硬件上的逐数一致。请按平台对应的结果表核对，不把近似结果当成相同的逐样本预测。
+
+缺失/空清单会拒绝通过；重复运行已完成阶段先核验完整性，不覆盖历史清单。外部数据下载和 SHA-256 校验已实测。入口范围记录见 [reproduction_check.json](results/topic1-final/reproduction_check.json)。
 
 ## 环境与安装
 
-本次实际验证平台为 Apple Silicon macOS、Python 3.12。需要 Git、Bash、网络、足够磁盘空间以及可持续运行的 CPU。Linux 可按同一流程安装，但本次未在 Linux 实测；Windows 请使用 WSL2。依赖锁包含原生科学库，不保证其他 Python 版本、CPU 架构或旧系统可用。
+已验证 Apple Silicon macOS 的完整流程，以及 Ubuntu 24.04 x86_64 的 minimum。需要 Python 3.12、Git、Bash、网络、足够磁盘空间以及可持续运行的 CPU。Windows 可尝试 WSL2 的 Linux 路径，但当前不能标记为已验证。依赖锁包含原生科学库，不保证其他 Python 版本、CPU 架构或旧系统可用。
 
 先安装 Python 3.12（确认 `python3.12 --version`）；若解释器不在 PATH，用实际的 Python 3.12 可执行文件绝对路径替换第一条 Python 命令。下载 ZIP 的用户解压后进入含 `README.md` 的仓库根目录，跳过 git clone。
 
@@ -60,7 +75,13 @@ V2 包含 XGBoost、内层搜索、强模型归档复评分和额外验证；脚
 
 新运行会有自己的耗时、环境信息、模型序列化哈希及清单哈希，不应强求与原实验逐字一致。科学比较应看相同任务、划分、指标和方法；内部模型重放仍按源码规定的容差严格核验。公开 `results/topic1-final/protocol.json` 是原实验来源记录，**不要复制到新运行的 outputs**，否则历史清单哈希会冲突。
 
-## 检查的三种含义
+## GitHub 上独立运行 Linux 验证
+
+在自己的 Fork 打开 Actions → **Topic 1 Linux reproduction** → Run workflow，选择 `minimum` 或 `all`。工作流使用 Ubuntu 24.04、Python 3.12、锁定科学依赖和固定提交的官方 Actions；仓库权限为只读，不需要 API 密钥。先安装和测试，再运行完整指定阶段，最后上传审计、报告、运行日志和数值诊断附件。`all` 是完整实验入口，但提供入口不代表本次已经在 Linux 运行过 `all`。
+
+Actions 附件保留 7 天，重要结果应及时下载；仓库中的复现审计 JSON 和逐折指标是长期保留的摘要。运行失败不能以某个前置步骤成功替代最终科学审计。
+
+## 不同检查能证明什么
 
 | 命令 / 文件 | 能证明什么 | 不能证明什么 |
 |---|---|---|
