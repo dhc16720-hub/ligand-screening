@@ -214,7 +214,7 @@ def stage(name):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage', choices=['setup','check-public','preflight','test','minimum','v2','v3','v4','final','all','check-outputs','check-complete','seal-final','download-external','small-data','check-small-data','external-diagnostics'])
+    parser.add_argument('stage', choices=['setup','check-public','preflight','test','minimum','v2','v3','v4','final','all','check-outputs','check-complete','seal-final','download-external','small-data','check-small-data','external-diagnostics','project','check-project'])
     args = parser.parse_args()
     if args.stage == 'setup': setup()
     elif args.stage == 'check-public': check_public()
@@ -223,6 +223,13 @@ def main():
     else:
         preflight()
         if args.stage == 'preflight': return
+        if args.stage == 'check-project':
+            run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_project.py'])
+            return
+        if args.stage == 'project':
+            for name in ['all', 'small-data', 'external-diagnostics', 'check-project']:
+                run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/reproduce_topic1.py', name])
+            return
         if args.stage in ['check-complete', 'seal-final']:
             extra = ['--seal'] if args.stage == 'seal-final' else []
             run(['bash', ROOT/'topic1/python.sh', ROOT/'scripts/verify_topic1_complete.py', *extra])
@@ -246,6 +253,7 @@ def main():
             module('unittest', 'discover', '-s', 'tests', '-p', 'test_reproduction.py')
             module('unittest', 'discover', '-s', 'tests', '-p', 'test_small_data.py')
             module('unittest', 'discover', '-s', 'tests', '-p', 'test_external_diagnostics.py')
+            module('unittest', 'discover', '-s', 'tests', '-p', 'test_project_delivery.py')
         elif args.stage == 'all':
             for name in ['minimum','v2','v3','v4','final']: stage(name)
         else: stage(args.stage)
